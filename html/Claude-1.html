@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.-->
+
+<head profile="http://dublincore.org/documents/dcmi-terms/">
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+<title xml:lang="en-US">- no title specified</title>
+<meta name="DCTERMS.title" content="" xml:lang="en-US"/>
+
+<meta name="DCTERMS.language" content="en-US" scheme="DCTERMS.RFC4646"/>
+<meta name="DCTERMS.source" content="http://xml.openoffice.org/odf2xhtml"/>
+
+<meta name="DCTERMS.issued" content="2026-07-20T15:42:03.930438509" scheme="DCTERMS.W3CDTF"/>
+
+<meta name="DCTERMS.modified" content="2026-07-20T15:43:06.768061882" scheme="DCTERMS.W3CDTF"/>
+
+
+<meta name="xsl:vendor" content="libxslt"/>
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" hreflang="en"/>
+<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" hreflang="en"/>
+<link rel="schema.DCTYPE" href="http://purl.org/dc/dcmitype/" hreflang="en"/>
+<link rel="schema.DCAM" href="http://purl.org/dc/dcam/" hreflang="en"/>
+
+<style>
+    table { border-collapse:collapse; border-spacing:0; empty-cells:show }
+    td, th { vertical-align:top; font-size:12pt;}
+    h1, h2, h3, h4, h5, h6 { clear:both;}
+    ol, ul { margin:0; padding:0;}
+    li { list-style: none; margin:0; padding:0;}
+    span.footnodeNumber { padding-right:1em; }
+    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }
+    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}
+    .paragraph-P1{ font-size:12pt; line-height:115%; margin-bottom:0in; margin-top:0in; font-family:'Liberation Serif'; writing-mode:horizontal-tb; direction:ltr;}
+    .paragraph-P2{ font-size:12pt; line-height:115%; margin-bottom:0.0972in; margin-top:0in; font-family:'Liberation Serif'; writing-mode:horizontal-tb; direction:ltr;}
+    .paragraph-P3{ font-size:12pt; line-height:115%; margin-bottom:0in; margin-top:0in; font-family:'Liberation Serif'; writing-mode:horizontal-tb; direction:ltr;}
+    .paragraph-P4{ font-size:12pt; line-height:115%; margin-bottom:0.0972in; margin-top:0in; font-family:'Liberation Serif'; writing-mode:horizontal-tb; direction:ltr;}
+    .paragraph-Standard{ font-size:12pt; font-family:'Liberation Serif'; writing-mode:horizontal-tb; direction:ltr;}
+    .paragraph-Text_20_body{ font-size:12pt; font-family:'Liberation Serif'; writing-mode:horizontal-tb; direction:ltr;margin-top:0in; margin-bottom:0.0972in; line-height:115%; }
+    .text-Bullet_20_Symbols{ font-family:OpenSymbol; }
+    .text-Emphasis{ font-style:italic; }
+    .text-Source_20_Text{ font-family:'Liberation Mono'; }
+    .text-Strong_20_Emphasis{ font-weight:bold; }
+    /* ODF styles with no properties representable as CSS:
+     { } */
+</style>
+</head>
+
+<body dir="ltr" style="margin-top:0.25in; margin-bottom:0in; margin-left:0.25in; margin-right:0.25in; ">
+
+<p class="paragraph-Text_20_body">The workflow from Inkscape SVG to cut part is three stages: prep the drawing, generate G-code (CAM), then stream that G-code to the machine. The Genmitsu 4030 runs GRBL 1.1 on an Arduino-based controller, so any GRBL-compatible sender works — no vendor lock-in.</p>
+
+<p class="paragraph-Text_20_body"><span class="text-Strong_20_Emphasis">1. Prep the SVG in Inkscape.</span> Set the document units to mm and make the drawing size match real-world dimensions (File → Document Properties). Convert any strokes or text to paths (<span class="text-Source_20_Text">Path → Object to Path</span>, <span class="text-Source_20_Text">Path → Stroke to Path</span>). Combine subpaths only if they're meant to be a single contour. It's worth simplifying (<span class="text-Source_20_Text">Path → Simplify</span>) to reduce node count on curves, but not so aggressively that the shape drifts. Save as plain SVG.</p>
+
+<p class="paragraph-Text_20_body"><span class="text-Strong_20_Emphasis">2. Generate G-code.</span> This is the CAM step, and it's where you specify tool diameter, cut depth, feeds/speeds, stepdown per pass, and whether the toolpath is inside/outside/on the line (offset direction matters — for cutting a shape <span class="text-Emphasis">out</span>, you want an outside offset by the tool radius, plus tabs so the piece doesn't move mid-cut). Good Linux-native options:</p>
+<ul><li><p class="P1" style="margin-left:0.7521cm;"><span class="Bullet_20_Symbols" style="display:block;float:left;min-width:0.4991cm;">•</span><span class="text-Strong_20_Emphasis">FreeCAD Path workbench</span> — heaviest but most capable. Import the SVG, extrude to a body if needed, then create a Job, Profile operation, and post-process with the <span class="text-Source_20_Text">grbl</span> post. Best if you'll be doing this often. <span class="odfLiEnd"/> </p></li><li><p class="P1" style="margin-left:0.7521cm;"><span class="Bullet_20_Symbols" style="display:block;float:left;min-width:0.4991cm;">•</span><span class="text-Strong_20_Emphasis">Kiri:Moto</span> (grid.space/kiri) — runs in the browser, no install, has a CNC mode with good SVG import. Fast to learn. <span class="odfLiEnd"/> </p></li><li><p class="P1" style="margin-left:0.7521cm;"><span class="Bullet_20_Symbols" style="display:block;float:left;min-width:0.4991cm;">•</span><span class="text-Strong_20_Emphasis">Inkscape </span><span class="text-Strong_20_Emphasis"><span class="text-Source_20_Text">gcodetools</span></span><span class="text-Strong_20_Emphasis"> extension</span> (Extensions → Gcodetools) — stays in Inkscape but the UX is dated and it's easy to get wrong offsets. Fine for engraving; less pleasant for profile cuts. <span class="odfLiEnd"/> </p></li><li><p class="P2" style="margin-left:0.7521cm;"><span class="Bullet_20_Symbols" style="display:block;float:left;min-width:0.4991cm;">•</span><span class="text-Strong_20_Emphasis">Estlcam</span> runs well under Wine if you want something closer to what the Genmitsu community typically uses. <span class="odfLiEnd"/> </p></li></ul>
+<p class="paragraph-Text_20_body">For a first cut in wood with a common 1/8" (3.175 mm) 2-flute endmill, reasonable starting numbers: feed 800–1000 mm/min, plunge 200–300 mm/min, stepdown 1–1.5 mm per pass, spindle at whatever fixed speed your 4030 spindle runs. Add 3–4 tabs (0.5–1 mm thick) around the perimeter.</p>
+
+<p class="paragraph-Text_20_body"><span class="text-Strong_20_Emphasis">3. Stream to the machine.</span> The 4030 comes with Candle, which has a Linux build, but on Kubuntu you're likely happier with one of:</p>
+<ul><li><p class="P3" style="margin-left:0.7521cm;"><span class="Bullet_20_Symbols" style="display:block;float:left;min-width:0.4991cm;">•</span><span class="text-Strong_20_Emphasis">UGS (Universal G-code Sender)</span> — Java, mature, <span class="text-Source_20_Text">apt</span>-friendly-ish (grab the platform build from winder.github.io/ugs_website). <span class="odfLiEnd"/> </p></li><li><p class="P3" style="margin-left:0.7521cm;"><span class="Bullet_20_Symbols" style="display:block;float:left;min-width:0.4991cm;">•</span><span class="text-Strong_20_Emphasis">gSender</span> — Electron app from Sienci; polished UI, has a <span class="text-Source_20_Text">.deb</span> and <span class="text-Source_20_Text">.AppImage</span>. <span class="odfLiEnd"/> </p></li><li><p class="P4" style="margin-left:0.7521cm;"><span class="Bullet_20_Symbols" style="display:block;float:left;min-width:0.4991cm;">•</span><span class="text-Strong_20_Emphasis">bCNC</span> — Python/Tk, feature-dense (autoleveling, probing, etc.), install via pip. <span class="odfLiEnd"/> </p></li></ul>
+<p class="paragraph-Text_20_body">Any of them will connect to the controller as a serial device — usually <span class="text-Source_20_Text">/dev/ttyUSB0</span> at 115200. Add yourself to the <span class="text-Source_20_Text">dialout</span> group so you don't need sudo: <span class="text-Source_20_Text">sudo usermod -aG dialout $USER</span> (then log out/in).</p>
+
+<p class="paragraph-Text_20_body"><span class="text-Strong_20_Emphasis">Running the job.</span> Secure the stock (double-sided tape, clamps, or a spoilboard with screws in waste areas). Home the machine if you have limit switches; otherwise jog to your work origin manually and zero X/Y/Z there. Z-zero is the fussy one — a piece of paper as a feeler gauge is the traditional method, a touch plate is better. Run with the spindle off first as an air pass over the material to confirm the toolpath fits, then run for real.</p>
+
+<p class="paragraph-Text_20_body">One thing worth doing early: cut a simple test rectangle (say 40×40 mm) and measure it. If it comes out 39.6 or 40.4, your steps/mm are off and you can tune them via <span class="text-Source_20_Text">$100</span>/<span class="text-Source_20_Text">$101</span>/<span class="text-Source_20_Text">$102</span> in GRBL before you waste stock on the real part.</p>
+<p class="paragraph-Standard"> </p></body>
+
+</html>
