@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>blog-bootstrap</title>
+    <link rel="stylesheet" href="blog.css"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                // customised options
+                // • auto-render specific keys, e.g.:
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                // • rendering keys, e.g.:
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <script src="blog.js" defer></script>
+</head>
+<body>
+<header style="padding-top: 0;">
+    <div class="container" style="padding-top: 1rem;">
+        <h1 style="font-size: 1.5em;">blog-bootstrap</h1>
+        <p>A chromium-centric file-only (server-not-needed) blog</p>
+        <p>There's a meta-blog <a href="meta-blog.html" target="_blank">here</a> where I track my progress on modifying/improving this blog's content.</p>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="posts">
+
+        <!-- Copy/Paste this blog, remove the inline style="display: none;", and update the id to match your post's date/time -->
+        <article class="post" id="YYMMDD-HHMM" style="display: none;">
+            <h3>My first blog entry</h3>
+            <p class="meta">A headline/comment/summary of what this blog entry is about.</p>
+            <p class="meta">2025-06-01 21:22 (UTC-7) by Daniel</p>
+            <p>I did a .fork of <a href="https://github.com/pflagerd/blog-bootstrap" target="_blank">https://github.com/pflagerd/blog-bootstrap</a></p>
+        </article>
+
+        <article class="post" id="250914-1140">
+            <h3>TODO</h3>
+            <p class="meta">What needs doing everywhere ...</p>
+            <p class="meta">2025-09-14 11:40 (UTC-7) by Daniel</p>
+
+            <!-- Estate Planning -->
+            <p title=""><label><input type="checkbox"> </label><a href="" target="_blank">A task</a></p>
+            <p style="margin-left: 1rem;" title=""><label><input type="checkbox"> </label><a href="" target="_blank">A subtask</a></p>
+            <p style="margin-left: 2rem;" title=""><label><input type="checkbox"> </label><a href="" target="_blank">A subsubtask</a></p>
+        </article>
+
+        <article class="post" id="250601-2122">
+            <h3>My first blog entry</h3>
+            <p class="meta">Put a headline/comment/summary of what this blog entry is about here.</p>
+            <p class="meta">2025-06-01 21:22 (UTC-7) by Daniel</p>
+            <p>I did a .fork of <a href="https://github.com/pflagerd/blog-bootstrap" target="_blank">https://github.com/pflagerd/blog-bootstrap</a></p>
+        </article>
+
+    </section>
+</main>
+
+<footer style="padding-bottom: 0;">
+    <div class="container" style="padding-bottom: 1rem;">
+        <p>&copy; 2025 Daniel P. Pflager. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

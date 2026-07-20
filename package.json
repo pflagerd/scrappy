@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-bootstrap",
+  "version": "1.0.0",
+  "description": "Bootstrap template for blog runner",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Code GPT",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1",
+    "puppeteer": "^24.36.1"
+  }
+}

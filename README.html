@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>blog-bootstrap — README</title>
+    <link rel="stylesheet" href="blog.css"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+    <style>
+        /* .toggle-btn covers color, white text, border-radius, font-size.
+           These three rules only add the color variants and fix margin for inline use. */
+        .toggle-btn.badge-green  { background-color: #28a745; }
+        .toggle-btn.badge-yellow { background-color: #e0a800; }
+        .toggle-btn.badge-gray   { background-color: #6c757d; }
+        .toggle-btn.badge        { margin-bottom: 0; cursor: default; }
+
+        /* No equivalent in blog.css */
+        .callout {
+            background: #e8f4fd;
+            border-left: 4px solid #007bff;
+            padding: 0.75rem 1rem;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .callout.warn {
+            background: #fff8e1;
+            border-left-color: #e0a800;
+        }
+
+        /* No h4 rule in blog.css */
+        article h4 {
+            font-size: 1.0rem;
+            margin-top: 1rem;
+            margin-bottom: 0.4rem;
+            color: #333;
+        }
+    </style>
+
+    <!-- Restore each article to expanded on every load, so README always starts fully open.
+         Runs before blog.js reads localStorage. User can still collapse during the session. -->
+    <script>
+        [   "readme-what-is-it",
+            "readme-forking",
+            "readme-file-structure",
+            "readme-features",
+            "readme-adding-a-post",
+            "readme-inline-tool",
+            "readme-meta-blog",
+            "readme-devtools",
+            "readme-dev-server",
+            "readme-branches",
+            "readme-license"
+        ].forEach(id => localStorage.setItem(id, "expanded"));
+    </script>
+
+    <script src="blog.js" defer></script>
+</head>
+<body>
+
+<header style="padding-top: 0; padding-bottom: 0;">
+    <div class="container" style="padding-top: 1rem; padding-bottom: 1rem;">
+        <h1 style="font-size: 1.5em;">README (blog-bootstrap)</h1>
+        <p>Everything you need to know about blog-bootstrap: what it is, how it works, and how to make it your own.</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://github.com/pflagerd/blog-bootstrap" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="posts">
+
+        <article class="post" id="readme-what-is-it">
+            <h3>What is blog-bootstrap?</h3>
+            <p class="meta">Purpose, philosophy, and a 30-second overview.</p>
+            <p>
+                <strong>blog-bootstrap</strong> is a minimal personal blogging system designed to run
+                directly from the filesystem — no web server required for day-to-day authoring and reading.
+                It is intentionally built around <strong>Chromium</strong> (and Chromium-based browsers) as the
+                sole runtime environment, which means every feature it uses is guaranteed to work
+                in a consistent, modern browser context without polyfills or build steps.
+            </p>
+            <p>
+                It is meant to be either <code>.fork</code>ed (read <em>dot-forked</em>) or branched
+                into another project. See the articles below for guidance on each approach.
+            </p>
+            <div class="callout">
+                <strong>Core philosophy:</strong> A blog should be as simple as a folder of files. Open <code>index.html</code>
+                in Chromium and start writing. No npm, no build pipeline, no CMS login.
+            </div>
+            <p>
+                When you do want a live-reload authoring experience, a small <strong>Node.js + Puppeteer + Express</strong>
+                server (<code>index.js</code>) can be launched to serve the files locally and keep a Chromium window open,
+                saving window geometry between sessions.
+            </p>
+        </article>
+
+        <article class="post" id="readme-forking">
+            <h3>.forking and Branching blog-bootstrap</h3>
+            <p class="meta">Two ways to incorporate blog-bootstrap into another project.</p>
+
+            <h4>.forking</h4>
+            <p>
+                If blog-bootstrap is <code>.fork</code>ed, its contents are copied to another repository,
+                along with a <code>.fork</code> file containing the version of both repositories at the time
+                of the dot-fork. You also add an entry in <code>blog-bootstrap/.forks</code> with the same
+                information in a slightly different format.
+            </p>
+            <p>
+                You may consult this <a href="https://gist.github.com/pflagerd/22bb3e89b56e158b303d7101009112e2" target="_blank">gist</a>
+                for guidance on how to a) create a <code>.fork</code> file, and b) how to update
+                <code>blog-bootstrap/.forks</code>. There are prototype <code>.fork</code> and <code>.forks</code>
+                files described there. Those prototypes contain instructions on how to put entries into them.
+            </p>
+
+            <h4>Branching</h4>
+            <p>
+                If it is branched, <code>blog-bootstrap</code> may be renamed because it will become a
+                subdirectory of the containing project. The <code>blog-bootstrap</code> repository should
+                be branched with the name of the containing project. If, for example, the containing project
+                is called <code>investing</code>, the branch should be called <code>investing</code> also.
+                The blog might be cloned at <code>investing/blog</code>. Since it is a nested repository,
+                <code>blog</code> (in this case) should be added to <code>investing/.gitignore</code>.
+            </p>
+        </article>
+
+        <article class="post" id="readme-file-structure">
+            <h3>File Structure</h3>
+            <p class="meta">Every file in the project and what it does.</p>
+<pre>blog-bootstrap/
+  ├── index.html        — Main blog page; add posts here
+  ├── meta-blog.html    — Companion blog for development notes &amp; process writing
+  ├── README.html       — This file; project documentation
+  ├── blog.css          — Shared stylesheet for all pages
+  ├── blog.js           — Expand/collapse behavior, localStorage state
+  ├── index.js          — Optional Node/Puppeteer dev server
+  ├── RUNME             — Entry-point script; cd-safe, sources SETMEUP, runs node index.js
+  ├── SETMEUP           — Checks for node &amp; npm, then runs npm ci
+  └── window-size.json  — Auto-generated; persists browser window dimensions</pre>
+        </article>
+
+        <article class="post" id="readme-features">
+            <h3>Features</h3>
+            <p class="meta">What blog-bootstrap does out of the box.</p>
+
+            <h4>
+                <span class="toggle-btn badge">UI</span>
+                Collapsible Articles
+            </h4>
+            <p>
+                Each <code>&lt;article&gt;</code> on the page gets an injected <em>Expand / Collapse</em> toggle automatically.
+                The first article loads expanded; all others start collapsed. Collapse state is persisted per-article
+                in <code>localStorage</code>, keyed by the article's <code>id</code> attribute (or an auto-generated
+                fallback), so the page remembers your reading position across reloads.
+            </p>
+
+            <h4>
+                <span class="toggle-btn badge badge-green">Math</span>
+                KaTeX Rendering
+            </h4>
+            <p>
+                All pages include the <strong>KaTeX</strong> library for inline and display math rendering.
+                Use standard LaTeX delimiters: <code>$…$</code> for inline, <code>$$…$$</code> or
+                <code>\[…\]</code> for display-mode equations.
+            </p>
+
+            <h4>
+                <span class="toggle-btn badge badge-yellow">Dev</span>
+                Optional Live-Reload Server
+            </h4>
+            <p>
+                Running <code>./RUNME</code> starts a local Express server on port 3000 and opens
+                <code>index.html</code> in a non-headless Chromium window via Puppeteer. The window's width and
+                height are saved to <code>window-size.json</code> on every resize (debounced to 500ms) and
+                restored on next launch.
+            </p>
+
+            <h4>
+                <span class="toggle-btn badge badge-gray">Copy</span>
+                Post Template
+            </h4>
+            <p>
+                A hidden template article (<code>style="display:none;"</code>) sits at the top of
+                <code>index.html</code>. Copy it, remove the inline display style, and fill in your content.
+            </p>
+        </article>
+
+        <article class="post" id="readme-adding-a-post">
+            <h3>How to Add a Post</h3>
+            <p class="meta">Step-by-step guide to creating a new blog entry.</p>
+            <ol>
+                <li>Open <code>index.html</code> in your editor (or in Chromium DevTools with a Workspace mapping).</li>
+                <li>Locate the template <code>&lt;article&gt;</code> block near the top of <code>&lt;section class="posts"&gt;</code>.</li>
+                <li>Copy the entire <code>&lt;article&gt;…&lt;/article&gt;</code> block and paste it below the existing articles.</li>
+                <li>Remove the <code>style="display:none;"</code> attribute from your new article.</li>
+                <li>Give the article a unique <code>id</code> in <code>YYMMDD-HHMM</code> format so its expand/collapse state is tracked independently.</li>
+                <li>Fill in the <code>&lt;h3&gt;</code> title, <code>.meta</code> summary line, date line, and body content.</li>
+                <li>Reload in Chromium (<code>location.reload()</code> in the console, or Ctrl+R).</li>
+            </ol>
+            <div class="callout warn">
+                <strong>Note on <code>localStorage</code> and <code>file://</code>:</strong> Chromium permits
+                <code>localStorage</code> on <code>file://</code> URLs, but the storage is scoped to the exact
+                file path. If you move the folder, expand/collapse memory resets. This is expected behavior.
+            </div>
+        </article>
+
+        <article class="post" id="readme-inline-tool">
+            <h3>inline-index-html.mjs</h3>
+            <p class="meta">Generate a self-contained standalone version of any blog page.</p>
+            <p>
+                This program can be used to generate a standalone version of <code>index.html</code> or
+                <code>meta-blog.html</code> — a single file with all dependencies inlined. It is run thus:
+            </p>
+<pre>node inline-index-html.mjs input.html output.html</pre>
+            <p>
+                Where <code>input.html</code> is either <code>index.html</code> or <code>meta-blog.html</code>,
+                and <code>output.html</code> is the name of the new standalone version.
+            </p>
+            <p>
+                Standalone versions are typically copied into another repository directly and are not dot-forked.
+                The names <code>inline-index.html</code> and <code>inline-meta-blog.html</code> are commonly
+                substituted for <code>output.html</code>, so they are listed in <code>blog-bootstrap/.gitignore</code>.
+            </p>
+        </article>
+
+        <article class="post" id="readme-meta-blog">
+            <h3>The Meta-Blog</h3>
+            <p class="meta">A development journal that lives alongside the blog itself.</p>
+            <p>
+                <code>meta-blog.html</code> is a companion page with the same CSS and JS as the main blog.
+                Its purpose is to capture <em>process writing</em> — notes about what was built, why certain
+                decisions were made, what's planned next, and any tooling or workflow observations.
+            </p>
+            <p>
+                It shares <code>blog.css</code> and <code>blog.js</code>, so any styling or behavior changes
+                propagate to both pages automatically.
+            </p>
+        </article>
+
+        <article class="post" id="readme-devtools">
+            <h3>Authoring Directly in Chromium DevTools</h3>
+            <p class="meta">No build step means DevTools Workspaces just work.</p>
+            <p>
+                Because blog-bootstrap has no build step, Chromium's built-in <strong>Sources → Workspace</strong>
+                feature works well for authoring. Map the project folder as a workspace, and edits made in
+                DevTools save directly to disk. Combine with <code>location.reload()</code> in the console
+                (or a keyboard shortcut macro) for a tight edit → reload loop without needing the Node server.
+            </p>
+            <p>
+                The meta-blog contains running notes on DevTools workflow improvements and wishlist items —
+                including the desire for an automatic reload-on-save shortcut.
+            </p>
+        </article>
+
+        <article class="post" id="readme-dev-server">
+            <h3>Running the Dev Server (Optional)</h3>
+            <p class="meta">RUNME and SETMEUP handle prerequisites and startup automatically.</p>
+            <p>
+                The recommended way to start the dev server is with the provided shell scripts,
+                which handle prerequisites and startup in the right order:
+            </p>
+<pre>chmod +x RUNME   # once, if needed
+./RUNME</pre>
+
+            <h4><code>SETMEUP</code> — Prerequisite checker &amp; installer</h4>
+            <p>
+                Sourced automatically by <code>RUNME</code>. Verifies that <code>node</code> and <code>npm</code>
+                are on your <code>$PATH</code>, aborting with a clear message if either is missing. If both are
+                present it runs <code>npm ci</code> to install exact dependency versions from
+                <code>package-lock.json</code> — reproducible and safe for repeated runs.
+            </p>
+
+            <h4><code>RUNME</code> — Entry-point launcher</h4>
+            <p>
+                Uses <code>pushd</code>/<code>popd</code> to <code>cd</code> to its own directory first,
+                so it works correctly regardless of where you invoke it from. Sources <code>SETMEUP</code>,
+                then delegates to <code>node index.js</code>, forwarding any command-line arguments via <code>"$@"</code>.
+            </p>
+            <p>
+                Once running, a Chromium window opens at <code>http://localhost:3000/index.html</code>.
+                Closing it shuts down the Express server automatically via the
+                <code>browser.on('disconnected')</code> event in <code>index.js</code>.
+            </p>
+            <div class="callout">
+                The dev server is entirely optional. For reading and lightweight writing, simply open
+                <code>index.html</code> directly in Chromium from the filesystem — no shell scripts needed.
+            </div>
+        </article>
+
+        <article class="post" id="readme-branches">
+            <h3>Notable Branches</h3>
+            <p class="meta">Branches of blog-bootstrap that contain useful features or patterns.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Branch</th>
+                        <th>Notable contents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>blog-bootstrap@cracking-the-coding-interview</code></td>
+                        <td>Script to load a file into the page (could move to <code>blog.js</code>); standalone <code>file-viewer-hardcoded.html</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>blog-bootstrap@improve-expand-collapse</code></td>
+                        <td>Code in <code>blog.js</code> worth studying for expand/collapse improvements</td>
+                    </tr>
+                    <tr>
+                        <td><code>blog-bootstrap@bok-blog</code></td>
+                        <td>RUNME, SETMEUP; watcher in <code>index.js</code>; remembers last browser window size</td>
+                    </tr>
+                    <tr>
+                        <td><code>blog-bootstrap@playback</code></td>
+                        <td>RUNME, SETMEUP</td>
+                    </tr>
+                    <tr>
+                        <td><code>blog-bootstrap@the-intelligent-investor</code></td>
+                        <td>RUNME, SETMEUP</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article class="post" id="readme-license">
+            <h3>License &amp; Attribution</h3>
+            <p class="meta">Fork it, adapt it, make it yours.</p>
+            <p>
+                blog-bootstrap is created and maintained by <strong>Daniel P. Pflager</strong>.
+                Source is available at
+                <a href="https://github.com/pflagerd/blog-bootstrap" target="_blank">github.com/pflagerd/blog-bootstrap</a>.
+            </p>
+        </article>
+
+    </section>
+</main>
+
+<footer style="padding-top: 0; padding-bottom: 0;">
+    <div class="container" style="padding-top: 1rem; padding-bottom: 1rem;">
+        <p>&copy; 2025 Daniel P. Pflager. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
