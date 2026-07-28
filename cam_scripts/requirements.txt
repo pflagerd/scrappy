@@ -1,0 +1,3 @@
+svgelements
+shapely
+matplotlib
