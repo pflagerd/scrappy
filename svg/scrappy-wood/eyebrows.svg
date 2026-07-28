@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="169.79062mm"
-   height="143.06586mm"
-   viewBox="0 0 169.79062 143.06586"
+   width="143.06586mm"
+   height="169.7906mm"
+   viewBox="0 0 143.06586 169.79061"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
@@ -24,13 +24,13 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.3924032"
-     inkscape:cx="256.75034"
-     inkscape:cy="457.12334"
-     inkscape:window-width="3200"
-     inkscape:window-height="1772"
+     inkscape:cx="206.11846"
+     inkscape:cy="334.67318"
+     inkscape:window-width="2150"
+     inkscape:window-height="1153"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
      id="defs1" />
@@ -38,15 +38,15 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-37.147924,-27.654243)">
+     transform="translate(-50.510299,-14.291867)">
     <path
        style="fill:none;stroke:#000000;stroke-width:0.254;stroke-dasharray:none;stroke-opacity:1"
-       d="M 37.30625,170.56293 177.15983,145.6726 163.84591,102.55171 c 0,0 -1.22255,-4.927574 -9.20048,-5.018771 -7.97794,-0.0912 -106.14938,12.713991 -117.33918,73.029991 z"
+       d="m 50.667473,14.450193 24.89033,139.853577 43.120887,-13.31392 c 0,0 4.92758,-1.22255 5.01877,-9.20048 0.0912,-7.97794 -12.71399,-106.149377 -73.029987,-117.339177 z"
        id="path8"
        sodipodi:nodetypes="cccsc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.254;stroke-dasharray:none;stroke-opacity:1"
-       d="M 206.78021,100.81173 66.92663,75.921394 80.24055,32.8005 c 0,0 1.22255,-4.927571 9.20048,-5.018768 7.97794,-0.0912 106.14938,12.713993 117.33918,73.029998 z"
+       d="m 120.41867,183.92415 24.89034,-139.853577 43.12089,13.31392 c 0,0 4.92757,1.22255 5.01877,9.20048 0.0912,7.97794 -12.71399,106.149377 -73.03,117.339177 z"
        id="path9"
        sodipodi:nodetypes="cccsc" />
   </g>

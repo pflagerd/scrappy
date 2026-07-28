@@ -31,3 +31,10 @@ python3 verify.py     # writes scrappy_toolpath_preview.png
 - New/different artwork -> point `SVG_PATH` at a new file; if it has group
   transforms like the original layer1 translate, add them in `geometry.py`
   the same way `LAYER1_DY` is handled.
+
+## Eyebrows (separate job, separate coordinate system)
+- `eyebrows_geometry.py` -- parses eyebrows.svg; origin is the artwork's OWN
+  bounding-box lower-left corner, independent of scrappy.svg's stock origin.
+- `eyebrows_main.py`     -- writes eyebrows_1_roundover.gcode (run first) and
+  eyebrows_2_cutout.gcode (run second, with tabs).
+- `eyebrows_verify.py`   -- writes eyebrows_toolpath_preview.png.
