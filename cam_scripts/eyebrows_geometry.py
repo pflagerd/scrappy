@@ -11,8 +11,8 @@ from shapely.ops import unary_union
 SVG_PATH = "/mnt/user-data/uploads/eyebrows.svg"
 
 # layer1 group transform (translate) -- applies to both path8, path9
-LAYER1_DX = -50.510299
-LAYER1_DY = -14.291867
+LAYER1_DX = -50.714471
+LAYER1_DY = -16.572097
 
 FLATTEN_SEGMENTS_PER_CURVE = 48
 
