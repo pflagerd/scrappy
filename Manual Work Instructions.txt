@@ -1,0 +1,8 @@
+Home Machine
+Jog positive Y 20mm
+Jog positive X 10mm
+Turn Z-axis manually to lower the gantry at least 5mm from its high point (where Home left it).
+Reset Zero
+Load scrappy_2_mouth.gcode
+Do a test run with any bit.
+Draw the leftest, highest, lowest, rightest points on the workpiece lightly
