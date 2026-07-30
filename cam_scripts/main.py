@@ -91,7 +91,7 @@ def build_roundover(title, geom, offset_dist, depth, outfile):
 
 if __name__ == "__main__":
     import os
-    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gcode")
+    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     shift_x = geo.center_shift_x(geo.OUTPUT_STOCK_WIDTH)
