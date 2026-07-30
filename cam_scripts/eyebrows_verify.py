@@ -1,9 +1,13 @@
+import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import eyebrows_geometry as ebg
 import eyebrows_main as ebm
 import toolpath as tp
+
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 shapes, bbox = ebg.eyebrows_machine()
 
@@ -48,6 +52,6 @@ for ax in axes:
     ax.legend(by_label.values(), by_label.keys(), loc='upper right', fontsize=7)
 
 plt.tight_layout()
-plt.savefig("/mnt/user-data/outputs/eyebrows_toolpath_preview.png", dpi=130)
+plt.savefig(os.path.join(OUTPUT_DIR, "eyebrows_toolpath_preview.png"), dpi=130)
 print("saved preview")
 print(f"combined bbox (svg space): {bbox}")

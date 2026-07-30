@@ -1,9 +1,13 @@
+import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import geometry as geo
 import toolpath as tp
 import config as cfg
+
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 STOCK_W, STOCK_H = geo.OUTPUT_STOCK_WIDTH, geo.STOCK_HEIGHT
 SHIFT_X = geo.center_shift_x(STOCK_W)
@@ -88,7 +92,7 @@ ax.legend(loc='upper right', fontsize=7)
 ax.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("/mnt/user-data/outputs/scrappy_toolpath_preview.png", dpi=130)
+plt.savefig(os.path.join(OUTPUT_DIR, "scrappy_toolpath_preview.png"), dpi=130)
 print("saved preview")
 
 # Print a few sanity numbers

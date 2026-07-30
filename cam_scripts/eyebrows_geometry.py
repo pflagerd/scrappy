@@ -3,12 +3,13 @@ independent of scrappy.svg's stock-corner origin, per the user's
 explicit instruction. Origin here = lower-left corner of the combined
 eyebrow artwork's own bounding box.
 """
+import os
 import re
 from svgelements import Path
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
-SVG_PATH = "/mnt/user-data/uploads/eyebrows.svg"
+SVG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "svg", "scrappy-wood", "eyebrows.svg")
 
 # layer1 group transform (translate) -- applies to both path8, path9
 LAYER1_DX = -50.714471

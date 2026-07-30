@@ -88,9 +88,13 @@ def build_cutout(outfile):
 
 
 if __name__ == "__main__":
-    shapes = build_roundover("/mnt/user-data/outputs/eyebrows_1_roundover.gcode")
+    import os
+    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    shapes = build_roundover(os.path.join(OUTPUT_DIR, "eyebrows_1_roundover.gcode"))
     print("round-over written")
-    per_shape = build_cutout("/mnt/user-data/outputs/eyebrows_2_cutout.gcode")
+    per_shape = build_cutout(os.path.join(OUTPUT_DIR, "eyebrows_2_cutout.gcode"))
     print("cutout written")
     for i, (coords, windows, lengths, total) in enumerate(per_shape):
         print(f"eyebrow {i}: {len(coords)} pts, perimeter {total:.1f}mm, "
