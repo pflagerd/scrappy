@@ -28,10 +28,10 @@ def build_pocket(title, geom, depth, outfile):
     return len(rings), passes
 
 
-def build_profile(title, geom, depth, outfile):
+def build_profile(title, geom, depth, outfile, stepdown=cfg.STEPDOWN):
     coords = tp.offset_profile(geom, cfg.TOOL_RADIUS, side='inside')
     total = tp.perimeter_length(coords)
-    passes = max(1, math.ceil(depth / cfg.STEPDOWN))
+    passes = max(1, math.ceil(depth / stepdown))
     pass_depth = depth / passes
 
     gc = GCodeWriter(title)
@@ -50,29 +50,6 @@ def build_profile(title, geom, depth, outfile):
     gc.footer()
     gc.save(outfile)
     return len(coords), passes, total
-
-
-def build_roundover(title, geom, offset_dist, depth, outfile):
-    """Single-pass profile trace, offset OUTWARD from `geom` by offset_dist,
-    straight to `depth` in one pass -- for a round-over/chamfer bit run
-    along an edge, not a stepped-down endmill pocket."""
-    offset_geom = geom.buffer(offset_dist, join_style=1)
-    if offset_geom.geom_type == 'MultiPolygon':
-        offset_geom = max(offset_geom.geoms, key=lambda p: p.area)
-    coords = list(offset_geom.exterior.coords)
-
-    gc = GCodeWriter(title)
-    gc.comment(f"Round-over profile, {offset_dist:.2f}mm outside the mouth SVG path, "
-               f"single pass to Z=-{depth:.3f}mm")
-    x0, y0 = coords[0]
-    gc.rapid_to(x0, y0, cfg.SAFE_Z)
-    gc.plunge_to(-depth)
-    for (x, y) in coords[1:]:
-        gc.cut_to(x, y, -depth)
-    gc.safe_retract()
-    gc.footer()
-    gc.save(outfile)
-    return len(coords), offset_geom.bounds
 
 
 if __name__ == "__main__":
@@ -106,11 +83,9 @@ if __name__ == "__main__":
         print(f"*** WARNING: mouth extends {-mb[1]:.2f}mm below machine Y=0 "
               f"(past the bottom edge of the stock) ***")
 
-    # --- round-over pass, 2mm outside the mouth path, 2.5mm deep ---
-    n_pts, rb = build_roundover(
-        "Scrappy - mouth round-over pass (2mm outside, 2.5mm deep)",
-        mo, offset_dist=2.0, depth=2.5,
-        outfile=os.path.join(OUTPUT_DIR, "scrappy_4_mouth_roundover.gcode"))
-    print(f"\nround-over: {n_pts} pts, bounds(mm)={tuple(round(v,2) for v in rb)}")
-    if rb[1] < 0:
-        print(f"*** WARNING: round-over path extends {-rb[1]:.2f}mm below machine Y=0 ***")
+    # --- round-over pass: same trajectory as the mouth cutout, 1mm steps to 3mm deep ---
+    n_pts, n_passes, total = build_profile(
+        "Scrappy - mouth round-over pass (same trajectory as cutout, 1mm steps to 3mm deep)",
+        mo, 3.0, os.path.join(OUTPUT_DIR, "scrappy_4_mouth_roundover.gcode"),
+        stepdown=1.0)
+    print(f"\nround-over: {n_pts} pts, {n_passes} passes, perimeter={total:.1f}mm")
