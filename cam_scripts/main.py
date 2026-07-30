@@ -91,7 +91,8 @@ def build_roundover(title, geom, offset_dist, depth, outfile):
 
 if __name__ == "__main__":
     import os
-    os.makedirs("/mnt/user-data/outputs", exist_ok=True)
+    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gcode")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     shift_x = geo.center_shift_x(geo.OUTPUT_STOCK_WIDTH)
     print(f"Centering shift: {shift_x:+.3f} mm on a {geo.OUTPUT_STOCK_WIDTH:.1f}mm-wide stock")
@@ -99,19 +100,19 @@ if __name__ == "__main__":
     ew = geo.eye_whites(shift_x)
     n_rings, n_passes = build_pocket(
         "Scrappy - eye whites pocket (centered, 400mm stock)", ew, cfg.EYE_WHITE_DEPTH,
-        "/mnt/user-data/outputs/scrappy_1_eye_whites.gcode")
+        os.path.join(OUTPUT_DIR, "scrappy_1_eye_whites.gcode"))
     print(f"eye-whites: {n_rings} rings, {n_passes} passes")
 
     pu = geo.pupils(shift_x)
     n_rings, n_passes = build_pocket(
         "Scrappy - pupils pocket (centered, 400mm stock)", pu, cfg.PUPIL_DEPTH,
-        "/mnt/user-data/outputs/scrappy_2_pupils.gcode")
+        os.path.join(OUTPUT_DIR, "scrappy_2_pupils.gcode"))
     print(f"pupils: {n_rings} rings, {n_passes} passes")
 
     mo = geo.mouth(shift_x)
     n_pts, n_passes, windows, total, coords, lengths = build_profile_with_tabs(
         "Scrappy - mouth through-cut with tabs (centered, 400mm stock)", mo, cfg.MOUTH_DEPTH,
-        "/mnt/user-data/outputs/scrappy_3_mouth.gcode")
+        os.path.join(OUTPUT_DIR, "scrappy_3_mouth.gcode"))
     print(f"mouth: {n_pts} pts, {n_passes} passes, "
           f"{len(windows)} tab windows, perimeter={total:.1f}mm")
 
@@ -128,7 +129,7 @@ if __name__ == "__main__":
     n_pts, rb = build_roundover(
         "Scrappy - mouth round-over pass (2mm outside, 2.5mm deep)",
         mo, offset_dist=2.0, depth=2.5,
-        outfile="/mnt/user-data/outputs/scrappy_4_mouth_roundover.gcode")
+        outfile=os.path.join(OUTPUT_DIR, "scrappy_4_mouth_roundover.gcode"))
     print(f"\nround-over: {n_pts} pts, bounds(mm)={tuple(round(v,2) for v in rb)}")
     if rb[1] < 0:
         print(f"*** WARNING: round-over path extends {-rb[1]:.2f}mm below machine Y=0 ***")
