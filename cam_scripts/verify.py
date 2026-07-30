@@ -10,7 +10,6 @@ OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 STOCK_W, STOCK_H = geo.OUTPUT_STOCK_WIDTH, geo.STOCK_HEIGHT
-SHIFT_X = geo.center_shift_x(STOCK_W)
 
 
 def plot_stock_outline(ax):
@@ -26,7 +25,7 @@ fig, axes = plt.subplots(1, 4, figsize=(27, 8))
 # --- eye whites pocket ---
 ax = axes[0]
 plot_stock_outline(ax)
-ew = geo.eye_whites(SHIFT_X)
+ew = geo.eye_whites()
 for sp in tp._subpolys(ew):
     xs, ys = sp.exterior.xy
     ax.plot(xs, ys, 'b-', linewidth=1, label='artwork boundary')
@@ -42,7 +41,7 @@ ax.set_ylim(-10, STOCK_H + 10)
 # --- pupils pocket ---
 ax = axes[1]
 plot_stock_outline(ax)
-pu = geo.pupils(SHIFT_X)
+pu = geo.pupils()
 for sp in tp._subpolys(pu):
     xs, ys = sp.exterior.xy
     ax.plot(xs, ys, 'b-', linewidth=1)
@@ -58,7 +57,7 @@ ax.set_ylim(-10, STOCK_H + 10)
 # --- mouth profile with tabs ---
 ax = axes[2]
 plot_stock_outline(ax)
-mo = geo.mouth(SHIFT_X)
+mo = geo.mouth()
 xs, ys = mo.exterior.xy
 ax.plot(xs, ys, 'b-', linewidth=1, label='artwork boundary')
 coords = tp.offset_profile(mo, cfg.TOOL_RADIUS, side='inside')

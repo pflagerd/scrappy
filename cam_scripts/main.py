@@ -94,22 +94,19 @@ if __name__ == "__main__":
     OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    shift_x = geo.center_shift_x(geo.OUTPUT_STOCK_WIDTH)
-    print(f"Centering shift: {shift_x:+.3f} mm on a {geo.OUTPUT_STOCK_WIDTH:.1f}mm-wide stock")
-
-    ew = geo.eye_whites(shift_x)
+    ew = geo.eye_whites()
     n_rings, n_passes = build_pocket(
         "Scrappy - eye whites pocket (centered, 400mm stock)", ew, cfg.EYE_WHITE_DEPTH,
         os.path.join(OUTPUT_DIR, "scrappy_1_eye_whites.gcode"))
     print(f"eye-whites: {n_rings} rings, {n_passes} passes")
 
-    pu = geo.pupils(shift_x)
+    pu = geo.pupils()
     n_rings, n_passes = build_pocket(
         "Scrappy - pupils pocket (centered, 400mm stock)", pu, cfg.PUPIL_DEPTH,
         os.path.join(OUTPUT_DIR, "scrappy_2_pupils.gcode"))
     print(f"pupils: {n_rings} rings, {n_passes} passes")
 
-    mo = geo.mouth(shift_x)
+    mo = geo.mouth()
     n_pts, n_passes, windows, total, coords, lengths = build_profile_with_tabs(
         "Scrappy - mouth through-cut with tabs (centered, 400mm stock)", mo, cfg.MOUTH_DEPTH,
         os.path.join(OUTPUT_DIR, "scrappy_3_mouth.gcode"))
@@ -122,8 +119,7 @@ if __name__ == "__main__":
         print("*** WARNING: mouth toolpath exceeds the 400mm stock width ***")
     if mb[1] < 0:
         print(f"*** WARNING: mouth extends {-mb[1]:.2f}mm below machine Y=0 "
-              f"(past the bottom edge of the stock) -- same issue as before, "
-              f"unaffected by the horizontal centering ***")
+              f"(past the bottom edge of the stock) ***")
 
     # --- round-over pass, 2mm outside the mouth path, 2.5mm deep ---
     n_pts, rb = build_roundover(
