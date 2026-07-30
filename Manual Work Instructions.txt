@@ -6,3 +6,17 @@ Reset Zero
 Load scrappy_2_mouth.gcode
 Do a test run with any bit.
 Draw the leftest, highest, lowest, rightest points on the workpiece lightly
+Having confirmed positioning, pause the job, then stop the job.
+Click Return to Zero
+Make sure the gantry is high enough to change to the 2mm roundy-nose bit.
+Put the dust skirt on vaccuum shoe and turn on vaccuum.
+Place the 0.10mm feeler gauge against the workpiece and manually lower the cutting head until the bit touches the gauge
+Run it.
+Job will end up non-zero.
+Return to Zero
+Lift head high enough to change bit.
+Remove dust skirt
+Change to 6mm round-over bit.
+With bit at least 20mm above workpiece, do a test run.
+Return to Zero
+Put on dust skirt
