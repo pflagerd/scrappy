@@ -6,7 +6,7 @@ import geometry as geo
 import toolpath as tp
 import config as cfg
 
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gcode")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 STOCK_W, STOCK_H = geo.OUTPUT_STOCK_WIDTH, geo.STOCK_HEIGHT

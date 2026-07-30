@@ -78,7 +78,7 @@ def build_cutout(outfile):
 
 if __name__ == "__main__":
     import os
-    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gcode")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     shapes = build_roundover(os.path.join(OUTPUT_DIR, "eyebrows_1_roundover.gcode"))

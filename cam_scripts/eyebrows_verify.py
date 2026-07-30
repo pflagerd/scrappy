@@ -6,7 +6,7 @@ import eyebrows_geometry as ebg
 import eyebrows_main as ebm
 import toolpath as tp
 
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gcode")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 shapes, bbox = ebg.eyebrows_machine()

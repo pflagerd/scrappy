@@ -77,7 +77,7 @@ def build_roundover(title, geom, offset_dist, depth, outfile):
 
 if __name__ == "__main__":
     import os
-    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tmp")
+    OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gcode")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     ew = geo.whites()
