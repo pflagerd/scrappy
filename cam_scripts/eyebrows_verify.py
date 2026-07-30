@@ -32,17 +32,12 @@ for shape in shapes:
     ax.plot(xs, ys, 'b-', linewidth=1, label='svg path')
 for shape in shapes:
     coords = tp.offset_profile(shape, ebm.TOOL_RADIUS, side='outside')
-    windows, lengths, total = tp.tab_windows(coords, ebm.TAB_COUNT_PER_EYEBROW, ebm.TAB_WIDTH)
     xs, ys = zip(*coords)
     ax.plot(xs, ys, 'g-', linewidth=1, label='cutter path (+0.75mm outside)')
-    for j, (x, y) in enumerate(coords):
-        if tp.in_any_window(lengths[j], windows, total):
-            ax.plot(x, y, 'ro', markersize=2)
 ax.plot(0, 0, 'r+', markersize=14, markeredgewidth=2)
 ax.annotate('(0,0)', (0, 0), xytext=(10, 10), textcoords='offset points',
             color='red', fontsize=9)
-ax.set_title(f"Cutout pass\ndepth {ebm.CUTOUT_DEPTH}mm, tabs in red "
-             f"({ebm.TAB_COUNT_PER_EYEBROW}/eyebrow)")
+ax.set_title(f"Cutout pass\ndepth {ebm.CUTOUT_DEPTH}mm")
 ax.set_aspect('equal')
 ax.grid(True, alpha=0.3)
 

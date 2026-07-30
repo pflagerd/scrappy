@@ -17,8 +17,3 @@ PUPIL_DEPTH = 0.79375        # 1/32in
 STOCK_THICKNESS = 12.7       # 1/2in plywood
 MOUTH_THROUGH_EXTRA = 0.5    # cut a bit past material thickness, into a sacrificial backer
 MOUTH_DEPTH = STOCK_THICKNESS + MOUTH_THROUGH_EXTRA
-
-# ---- Tabs (mouth through-cut only) ----
-TAB_COUNT = 4
-TAB_WIDTH = 4.0              # mm, arc-length span of each tab
-TAB_HEIGHT = 1.5             # mm of material left UNCUT at each tab (thin enough to snap by hand)

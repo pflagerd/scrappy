@@ -25,7 +25,7 @@ fig, axes = plt.subplots(1, 4, figsize=(27, 8))
 # --- eye whites pocket ---
 ax = axes[0]
 plot_stock_outline(ax)
-ew = geo.eye_whites()
+ew = geo.whites()
 for sp in tp._subpolys(ew):
     xs, ys = sp.exterior.xy
     ax.plot(xs, ys, 'b-', linewidth=1, label='artwork boundary')
@@ -54,20 +54,16 @@ ax.set_aspect('equal')
 ax.set_xlim(-10, STOCK_W + 10)
 ax.set_ylim(-10, STOCK_H + 10)
 
-# --- mouth profile with tabs ---
+# --- mouth profile ---
 ax = axes[2]
 plot_stock_outline(ax)
 mo = geo.mouth()
 xs, ys = mo.exterior.xy
 ax.plot(xs, ys, 'b-', linewidth=1, label='artwork boundary')
 coords = tp.offset_profile(mo, cfg.TOOL_RADIUS, side='inside')
-windows, lengths, total = tp.tab_windows(coords, cfg.TAB_COUNT, cfg.TAB_WIDTH)
 xs2, ys2 = zip(*coords)
 ax.plot(xs2, ys2, 'g-', linewidth=1, label='cutter path (inside offset)')
-for j, (x, y) in enumerate(coords):
-    if tp.in_any_window(lengths[j], windows, total):
-        ax.plot(x, y, 'ro', markersize=2)
-ax.set_title(f"Mouth through-cut\n{cfg.TAB_COUNT} tabs (red), depth {cfg.MOUTH_DEPTH}mm")
+ax.set_title(f"Mouth through-cut\ndepth {cfg.MOUTH_DEPTH}mm")
 ax.set_aspect('equal')
 ax.set_xlim(-10, STOCK_W + 10)
 ax.set_ylim(-10, STOCK_H + 10)

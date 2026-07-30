@@ -1,6 +1,6 @@
 """Toolpath generation: pocket clearing (concentric offsets) and profile
-cuts (single inward offset) with tab support.  Pure geometry -- no G-code
-here, just lists of (x, y[, z]) points in machine space.
+cuts (single inward offset).  Pure geometry -- no G-code here, just lists
+of (x, y[, z]) points in machine space.
 """
 import math
 from shapely.geometry import Polygon, MultiPolygon
@@ -42,34 +42,11 @@ def offset_profile(geom, tool_radius, side='inside'):
     return list(offset_geom.exterior.coords)
 
 
-def _cumulative_lengths(coords):
-    lengths = [0.0]
+def perimeter_length(coords):
+    total = 0.0
     for i in range(1, len(coords)):
         x0, y0 = coords[i - 1]
         x1, y1 = coords[i]
-        lengths.append(lengths[-1] + math.hypot(x1 - x0, y1 - y0))
-    return lengths
+        total += math.hypot(x1 - x0, y1 - y0)
+    return total
 
-
-def tab_windows(coords, tab_count, tab_width):
-    """Evenly space `tab_count` tab windows (arc-length ranges) around the
-    closed loop `coords`. Returns list of (start_len, end_len) tuples."""
-    lengths = _cumulative_lengths(coords)
-    total = lengths[-1]
-    windows = []
-    for i in range(tab_count):
-        center = (i + 0.5) * total / tab_count
-        windows.append((center - tab_width / 2, center + tab_width / 2))
-    return windows, lengths, total
-
-
-def in_any_window(s, windows, total):
-    for (a, b) in windows:
-        lo, hi = a % total, b % total
-        if lo <= hi:
-            if lo <= s <= hi:
-                return True
-        else:  # wraps around the seam
-            if s >= lo or s <= hi:
-                return True
-    return False

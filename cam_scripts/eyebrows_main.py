@@ -19,10 +19,6 @@ CUTOUT_DEPTH = STOCK_THICKNESS + THROUGH_EXTRA   # 13.2mm
 
 ROUNDOVER_DEPTH = 6.0          # mm, single pass, per spec
 
-TAB_COUNT_PER_EYEBROW = 3
-TAB_WIDTH = 3.0
-TAB_HEIGHT = 1.5
-
 
 def build_roundover(outfile):
     """Round-over pass: traced along the ORIGINAL svg path of each eyebrow
@@ -49,38 +45,31 @@ def build_roundover(outfile):
 def build_cutout(outfile):
     """Cutout pass: offset OUTWARD from each eyebrow's svg path by the tool
     radius (so the kept piece matches the drawn shape), multi-pass through
-    the material, with tabs holding each piece in place."""
+    the material."""
     shapes, _ = ebg.eyebrows_machine()
-    gc = GCodeWriter("Eyebrows - cutout (outside offset, through-cut with tabs)")
+    gc = GCodeWriter("Eyebrows - cutout (outside offset, through-cut)")
     gc.comment("Origin: lower-left corner of the eyebrow artwork's own bounding box")
     gc.comment("Independent coordinate system -- NOT shared with the rest of Scrappy")
     passes = max(1, math.ceil(CUTOUT_DEPTH / STEPDOWN))
     pass_depth = CUTOUT_DEPTH / passes
-    tab_top_z = -(CUTOUT_DEPTH - TAB_HEIGHT)
-    gc.comment(f"{passes} Z passes of {pass_depth:.4f}mm to {CUTOUT_DEPTH:.3f}mm total, "
-               f"{TAB_COUNT_PER_EYEBROW} tabs/eyebrow")
+    gc.comment(f"{passes} Z passes of {pass_depth:.4f}mm to {CUTOUT_DEPTH:.3f}mm total")
 
     per_shape = []
     for shape in shapes:
         coords = tp.offset_profile(shape, TOOL_RADIUS, side='outside')
-        windows, lengths, total = tp.tab_windows(coords, TAB_COUNT_PER_EYEBROW, TAB_WIDTH)
-        per_shape.append((coords, windows, lengths, total))
+        per_shape.append((coords, tp.perimeter_length(coords)))
 
     for i in range(1, passes + 1):
-        z_target = -i * pass_depth
-        gc.comment(f"-- pass {i}/{passes}, target Z={z_target:.4f} --")
-        for si, (coords, windows, lengths, total) in enumerate(per_shape):
-            def eff_z(s, windows=windows, total=total):
-                if tp.in_any_window(s, windows, total):
-                    return max(z_target, tab_top_z)
-                return z_target
+        z = -i * pass_depth
+        gc.comment(f"-- pass {i}/{passes}, Z={z:.4f} --")
+        for si, (coords, total) in enumerate(per_shape):
             gc.comment(f"eyebrow {si+1}/2")
             x0, y0 = coords[0]
             gc.rapid_to(x0, y0, SAFE_Z)
-            gc.plunge_to(eff_z(lengths[0]))
+            gc.plunge_to(z)
             for j in range(1, len(coords)):
                 x, y = coords[j]
-                gc.cut_to(x, y, eff_z(lengths[j]))
+                gc.cut_to(x, y, z)
             gc.safe_retract()
     gc.footer()
     gc.save(outfile)
@@ -96,6 +85,5 @@ if __name__ == "__main__":
     print("round-over written")
     per_shape = build_cutout(os.path.join(OUTPUT_DIR, "eyebrows_2_cutout.gcode"))
     print("cutout written")
-    for i, (coords, windows, lengths, total) in enumerate(per_shape):
-        print(f"eyebrow {i}: {len(coords)} pts, perimeter {total:.1f}mm, "
-              f"{len(windows)} tabs")
+    for i, (coords, total) in enumerate(per_shape):
+        print(f"eyebrow {i}: {len(coords)} pts, perimeter {total:.1f}mm")

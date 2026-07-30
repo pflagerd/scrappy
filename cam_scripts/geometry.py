@@ -79,23 +79,23 @@ def load_shape(path_id):
     return poly
 
 
-def eye_whites():
-    return unary_union([load_shape('path1'), load_shape('path2')])
+def whites():
+    return unary_union([load_shape('left-white'), load_shape('right-white')])
 
 
 def pupils():
-    return unary_union([load_shape('path3'), load_shape('path5')])
+    return unary_union([load_shape('left-pupil'), load_shape('right-pupil')])
 
 
 def mouth():
-    return load_shape('path6')
+    return load_shape('mouth')
 
 
 if __name__ == "__main__":
-    ew = eye_whites()
+    ew = whites()
     pu = pupils()
     mo = mouth()
-    for name, geom in [("eye-whites", ew), ("pupils", pu), ("mouth", mo)]:
+    for name, geom in [("whites", ew), ("pupils", pu), ("mouth", mo)]:
         b = geom.bounds
         print(f"{name}: type={geom.geom_type} area={geom.area:.1f}mm^2 "
               f"bounds(machine mm, y-up)=({b[0]:.3f},{b[1]:.3f})-({b[2]:.3f},{b[3]:.3f}) "
