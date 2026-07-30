@@ -9,13 +9,14 @@ Coordinate convention:
 This is a single fixed global transform -- every operation generated from this
 module shares exactly the same physical zero point, by construction.
 """
+import os
 import re
 from svgelements import Path
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.ops import unary_union
 from shapely.affinity import translate
 
-SVG_PATH = "/mnt/user-data/uploads/scrappy.svg"
+SVG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "svg", "scrappy-wood", "scrappy.svg")
 
 # Original artwork canvas -- used only to resolve the SVG's own y-down -> y-up
 # flip. This is NOT the physical output stock size (see OUTPUT_STOCK_WIDTH).
