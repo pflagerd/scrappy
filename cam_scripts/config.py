@@ -12,8 +12,8 @@ STEPDOWN = 1.5               # mm, max Z depth removed per pass (conservative fo
 STEPOVER_FRACTION = 0.40     # pocket clearing stepover, as a fraction of tool diameter
 
 # ---- Depths (positive numbers, mm below stock top surface) ----
-EYE_WHITE_DEPTH = 0.5        # 1/2mm
-PUPIL_DEPTH = 0.25           # 1/4mm
+EYE_WHITE_DEPTH = 1.5        # mm, 2 passes of 0.75mm
+PUPIL_DEPTH = 0.5            # mm
 STOCK_THICKNESS = 12.7       # 1/2in plywood
 MOUTH_THROUGH_EXTRA = 0.5    # cut a bit past material thickness, into a sacrificial backer
 MOUTH_DEPTH = STOCK_THICKNESS + MOUTH_THROUGH_EXTRA

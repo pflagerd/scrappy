@@ -5,9 +5,9 @@ import config as cfg
 from gcode import GCodeWriter
 
 
-def build_pocket(title, geom, depth, outfile):
+def build_pocket(title, geom, depth, outfile, stepdown=cfg.STEPDOWN):
     rings = tp.pocket_rings(geom, cfg.TOOL_RADIUS, cfg.STEPOVER_FRACTION * cfg.TOOL_DIAMETER)
-    passes = max(1, math.ceil(depth / cfg.STEPDOWN))
+    passes = max(1, math.ceil(depth / stepdown))
     pass_depth = depth / passes
 
     gc = GCodeWriter(title)
@@ -60,7 +60,8 @@ if __name__ == "__main__":
     ew = geo.whites()
     n_rings, n_passes = build_pocket(
         "Scrappy - whites pocket (centered, 400mm stock)", ew, cfg.EYE_WHITE_DEPTH,
-        os.path.join(OUTPUT_DIR, "scrappy_1_whites.gcode"))
+        os.path.join(OUTPUT_DIR, "scrappy_1_whites.gcode"),
+        stepdown=cfg.EYE_WHITE_DEPTH / 2)
     print(f"whites: {n_rings} rings, {n_passes} passes")
 
     pu = geo.pupils()
