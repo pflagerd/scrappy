@@ -84,9 +84,9 @@ if __name__ == "__main__":
         print(f"*** WARNING: mouth extends {-mb[1]:.2f}mm below machine Y=0 "
               f"(past the bottom edge of the stock) ***")
 
-    # --- round-over pass: same trajectory as the mouth cutout, 1mm steps to 3mm deep ---
+    # --- round-over pass: same trajectory as the mouth cutout, 1mm steps to 4.5mm deep ---
     n_pts, n_passes, total = build_profile(
-        "Scrappy - mouth round-over pass (same trajectory as cutout, 1mm steps to 3mm deep)",
-        mo, 3.0, os.path.join(OUTPUT_DIR, "scrappy_4_mouth_roundover.gcode"),
+        "Scrappy - mouth round-over pass (same trajectory as cutout, 1mm steps to 4.5mm deep)",
+        mo, 4.5, os.path.join(OUTPUT_DIR, "scrappy_4_mouth_roundover.gcode"),
         stepdown=1.0)
     print(f"\nround-over: {n_pts} pts, {n_passes} passes, perimeter={total:.1f}mm")
