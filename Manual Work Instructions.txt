@@ -20,3 +20,10 @@ Change to 6mm round-over bit.
 With bit at least 20mm above workpiece, do a test run.
 Return to Zero
 Put on dust skirt
+Place the 0.10 feeler gauge against the workpiecve and manually lower the cutting head untiol the bit touches the gauge. (Touches, not pins)
+
+
+
+jog control should always lift at least 5mm above3 zero.
+jog and return to home should respect machine Z zero, and other zero points. They should be part of a set up.
+
