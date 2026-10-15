@@ -32,6 +32,9 @@ integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRRe
         });
     </script>
     <script src="blog.js" defer="defer"></script>
+    <style>code {
+      font-size: 96.5%;
+    }</style>
   </head>
   <body>
     <header style="padding-top: 0;">
@@ -58,10 +61,15 @@ integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRRe
           <h3>TODO</h3>
           <p class="meta">What needs doing everywhere ...</p>
           <p class="meta">2025-09-14 11:40 (UTC-7) by Daniel</p>
-          <!-- Estate Planning -->
+
           <p title=""><label><input type="checkbox"> </label><a href=""
               target="_blank">Cut Scrappy's mouth out with Genmitsu
               Prover 4030 CNC</a><br>
+          </p>
+          <p title="">&nbsp;&nbsp;&nbsp; <label><input type="checkbox">
+          </label><a
+                  href="file:///home/oy753c/desktops/default/scrappy/index.html"
+                  target="_blank">Try using gcodetools to convert and cut.</a><br>
           </p>
           <p title="">&nbsp;&nbsp;&nbsp; <label><input type="checkbox">
             </label><a
@@ -86,10 +94,176 @@ integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRRe
                 type="checkbox"> </label><a href="" target="_blank">A
               subsubtask</a></p>
         </article>
-        <!-- Copy/Paste this blog, remove the inline style="display: none;", and update the id to match your post's date/time -->
+
+        <article style="display:none;" class="post" id="20260720T134851-0700"> <!-- Copy me, remove "display:none" style and update this comment -->
+          <h3>Copy me, remove "display:none" style and update this comment</h3>
+          <p class="meta">Mon Jul 20 01:48:51 PM PDT 2026 by Daniel</p>
+          <p>I did a .fork of <a href="https://github.com/pflagerd/blog-bootstrap" target="_blank">https://github.com/pflagerd/blog-bootstrap</a></p>
+        </article> <!-- Copy me, remove "display:none" style and update this comment -->
+
+
+        <!--article class="post" id="20260907T134252-0700" style=""> <!-- Creating the gcode from <code>svg/scrappy-wood/scrappy-centered-on-4030-stock.svg -->
+          <!--h3>Creating the gcode from <code>svg/scrappy-wood/scrappy-centered-on-4030-stock.svg</code></h3>
+          <span style="font-family:monospace; color:#000000;background-color:#ffffff;">Mon Sep  7 01:42:52 PM PDT 2026 by Daniel</span>
+          <p>There are so many ways allegedly to convert from .svg to gcode, my mind boggles.</p>
+          <p>I did however, in the past, use an extension to Inkscape called gcodetools.</p>
+          <p>I also seem to have that still installed as an extension in Inkscape on the dell7750:</p>
+          <p><img style="width: 40%;" src="img/Screenshot_20260907_154446.png" alt="img/Screenshot_20260907_154446.png"></p>
+          <p>It's fairly current:</p>
+          <p><img style="width: 30%;" src="img/Screenshot_20260907_154647.png" alt="img/Screenshot_20260907_154647.png">
+          <p>The source code for it appear to be <a href="https://github.com/cnc-club/gcodetools" target="_blank">https://github.com/cnc-clib/gcodetools</a>, and as of today's date its version number is 1.7 as can be checked in this file:
+          <a href="https://github.com/cnc-club/gcodetools/blob/master/stable/gcodetools_about.inx" target="_blank">https://github.com/cnc-club/gcodetools/blob/master/stable/gcodetools_about.inx</a>.</p>
+        </article><!-- Creating the gcode from <code>svg/scrappy-wood/scrappy-centered-on-4030-stock.svg -->
+
+        <article class="post" id="20260730T191400-0700" style=""> <!-- claude.ai generates python code to generate gcode for scrappy -->
+          <h3>claude.ai generates python code to generate gcode for scrappy</code></h3>
+          <span style="font-family:monospace; color:#000000;background-color:#ffffff;">Thu Jul 30 07:14:00 PM PDT 2026 by Daniel</span>
+          <p>I cannot begin to document all the machinations I went through with claude.ai to generate the Python code which I used to generate the gcode for Scrappy.</p>
+          <p>Suffice to say that you can find the code under the directory <code>cam_scripts/</code>, and the gcode files generated from the code in <code>cam_scripts/gcode/</code></p>
+          <p>
+          <style>
+            body {
+              font-family: "DejaVu Sans Mono", Consolas, Menlo, monospace;
+              font-size: 14px;
+              background: #ffffff;
+              color: #1e1e1e;
+              padding: 24px;
+            }
+
+            table {
+              border-collapse: collapse;
+              width: 100%;
+              max-width: 900px;
+            }
+
+            th {
+              text-align: left;
+              padding: 6px 10px;
+              border-bottom: 2px solid #444;
+              font-size: 13px;
+            }
+
+            td {
+              padding: 4px 10px;
+              vertical-align: top;
+              border-bottom: 1px solid #e0e0e0;
+            }
+
+            /* Indentation levels */
+            .level1 { padding-left: 4px; font-weight: bold; }
+            .level2 { padding-left: 28px; }
+            .level3 { padding-left: 52px; }
+
+            .comment {
+              color: #6a6a6a;
+              font-style: italic;
+            }
+
+            .level1 td { background: #f4f4f4; }
+          </style>
+
+          <table>
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Comment</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Level 1: top-level folder -->
+            <tr class="level1">
+              <td colspan="2">📁 cam_scripts/</td>
+            </tr>
+
+            <!-- Level 2: subfolder -->
+            <tr>
+              <td class="level2" colspan="2">📁 gcode/</td>
+            </tr>
+
+            <!-- Level 3: files (filename + comment columns) -->
+            <tr>
+              <td class="level3">eyebrows_1_roundover.gcode</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level3">eyebrows_2_cutout.gcode</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level3">scrappy_1_whites.gcode</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level3">scrappy_2_pupils.gcode</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level3">scrappy_3_mouth.gcode</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level3">scrappy_4_mouth_roundover.gcode</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level3">scrappy_toolpath_preview.png</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">config.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">eyebrows_geometry.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">eyebrows_main.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">eyebrows_verify.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">gcode.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">geometry.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">main.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">README.md</td>
+              <td class="comment">This file tells you what to run and how to run it.</td>
+            </tr>
+            <tr>
+              <td class="level2">requirements.txt</td>
+              <td class="comment">Run in a .venv, and load these modules.</td>
+            </tr>
+            <tr>
+              <td class="level2">toolpath.py</td>
+              <td class="comment"></td>
+            </tr>
+            <tr>
+              <td class="level2">verify.py</td>
+              <td class="comment"></td>
+            </tr>
+
+            </tbody>
+          </table>
+          </p>
+          <p>The bottom line here is that this process is very much NOT REPEATABLE.  Even with the generated gcode files, I ruined many workpieces just attempting to carve them.</p>
+          <p>In fact, as I write this, I could not remember how I generated the <code>*_roundover</code> files. Turns out it's done in <code>main.py</code> and <code>eyebrows_main.py</code></p>
+        </article> <!-- claude.ai generates python code to generate gcode for scrappy -->
+
         <article class="post" id="YYMMDD-HHMM" style="">
-          <h3>Prepping the SVG in Inkscape<br>
-          </h3>
+          <h3>Prepping the SVG in Inkscape</h3>
           <span style="font-family:monospace"><span
               style="color:#000000;background-color:#ffffff;">Sun Jul 26
               03:42:48 PM PDT 2026</span>&nbsp;</span> by Daniel
@@ -97,19 +271,97 @@ integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRRe
             so I make a copy of him at <code>svg/scrappy-wood.svg</code>
             .<br>
           </p>
+          <p>I also hand-measured the workpiece, having cut it to size copying from another piece.</p>
+          <p><img style="width: 30%;" src="img/20260901_125510.jpg" alt="img/20260901_125510.jpg"><img style="width: 30%;" src="img/20260901_125531.jpg" alt="img/20260901_125531.jpg"></p>
           <p>It takes quite a while, and many operations and questions
             to Claude about using Inkscape to get the drawing organized
             into layers per CNC operation.<br>
           </p>
-          <p>Claude originally generated a bunch of individual <code>.svg</code>
+          <p>Claude generated three <code>.svg</code>
             files, which I put into a directory called <code>svg/scrappy-wood/</code>.<br>
+            <style>
+              body {
+                font-family: "DejaVu Sans Mono", Consolas, Menlo, monospace;
+                font-size: 14px;
+                background: #ffffff;
+                color: #1e1e1e;
+                padding: 24px;
+              }
+
+              table {
+                border-collapse: collapse;
+                width: 100%;
+                max-width: 900px;
+              }
+
+              th {
+                text-align: left;
+                padding: 6px 10px;
+                border-bottom: 2px solid #444;
+                font-size: 13px;
+              }
+
+              td {
+                padding: 4px 10px;
+                vertical-align: top;
+                border-bottom: 1px solid #e0e0e0;
+              }
+
+              /* Indentation levels */
+              .level1 { padding-left: 4px; font-weight: bold; }
+              .level2 { padding-left: 28px; }
+              .level3 { padding-left: 52px; }
+
+              .comment {
+                color: #6a6a6a;
+                font-style: italic;
+              }
+
+              .level1 td { background: #f4f4f4; }
+            </style>
+
+            <table>
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Comment</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <!-- Level 1: top-level folder -->
+              <tr class="level1">
+                <td colspan="2">📁 svg/</td>
+              </tr>
+
+              <!-- Level 2: subfolder -->
+              <tr>
+                <td class="level2" colspan="2">📁 scrappy-wood/</td>
+              </tr>
+
+              <!-- Level 3: files (filename + comment columns) -->
+              <tr>
+                <td class="level3">scappy-centered-on-4030-stock.svg</td>
+                <td class="comment">svg centered on workpiece (which was hand-measured)</td>
+              </tr>
+              <tr>
+                <td class="level3">scrappy.svg</td>
+                <td class="comment">original simplified by claude.ai</td>
+              </tr>
+              <tr>
+                <td class="level3">eyebrows.svg</td>
+                <td class="comment">eyebrows simplified by claude.ai</td>
+              </tr>
+
+              </tbody>
+            </table>
           </p>
-          <p>The result is <code>svg/scrappy-wood/scrappy.svg</code>
+          <p>claude.ai produced <code>svg/scrappy-wood/scrappy.svg</code>
             shown below (which doesn't look like much, but is actually
             much simplified from its original form).<br>
           </p>
           <p><img
-src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTcuOTk1MTI1aW4iCiAgIGhlaWdodD0iMTIuNTE0MjM5aW4iCiAgIHZpZXdCb3g9IjAgMCA0NTcuMDc2MTggMzE3Ljg2MTY4IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmcxIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjQuMyAoMGQxNWY3NTA0MiwgMjAyNS0xMi0yNSkiCiAgIHNvZGlwb2RpOmRvY25hbWU9InNjcmFwcHkuc3ZnIgogICB4bWw6c3BhY2U9InByZXNlcnZlIgogICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9InNjcmFwcHktbGFzZXIuc3ZnIgogICBpbmtzY2FwZTpleHBvcnQteGRwaT0iOTYiCiAgIGlua3NjYXBlOmV4cG9ydC15ZHBpPSI5NiIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0iaW4iCiAgICAgaW5rc2NhcGU6em9vbT0iMC44MzA3MjA0IgogICAgIGlua3NjYXBlOmN4PSI3NzQuMDI2OTciCiAgICAgaW5rc2NhcGU6Y3k9IjY1My42NDk1MyIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE4MDQiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTMzMSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIwIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSIKICAgICBzaG93Z3JpZD0idHJ1ZSIKICAgICBpbmtzY2FwZTpsb2NrZ3VpZGVzPSJmYWxzZSI+PGlua3NjYXBlOmdyaWQKICAgICAgIGlkPSJncmlkMSIKICAgICAgIHVuaXRzPSJpbiIKICAgICAgIG9yaWdpbng9Ii0xLjEzMzkxNzJlLTA2IgogICAgICAgb3JpZ2lueT0iLTI5LjMwMTg3OSIKICAgICAgIHNwYWNpbmd4PSIyNS40IgogICAgICAgc3BhY2luZ3k9IjI1LjQiCiAgICAgICBlbXBjb2xvcj0iIzAwOTllNSIKICAgICAgIGVtcG9wYWNpdHk9IjAuMzAxOTYwNzgiCiAgICAgICBjb2xvcj0iIzAwOTllNSIKICAgICAgIG9wYWNpdHk9IjAuMTQ5MDE5NjEiCiAgICAgICBlbXBzcGFjaW5nPSI5IgogICAgICAgZW5hYmxlZD0idHJ1ZSIKICAgICAgIHZpc2libGU9InRydWUiIC8+PC9zb2RpcG9kaTpuYW1lZHZpZXc+PGRlZnMKICAgICBpZD0iZGVmczEiPjxjbGlwUGF0aAogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiCiAgICAgICBpZD0iY2xpcFBhdGg2Ij48cmVjdAogICAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO3N0cm9rZTojZmYwMDAwO3N0cm9rZS13aWR0aDowIgogICAgICAgICBpZD0icmVjdDciCiAgICAgICAgIHdpZHRoPSI0MjQuNTU4NzIiCiAgICAgICAgIGhlaWdodD0iMjk1LjI0ODI2IgogICAgICAgICB4PSIxMS4xNDc0NTMiCiAgICAgICAgIHk9IjMxLjg0OTg2NyIgLz48L2NsaXBQYXRoPjwvZGVmcz48ZwogICAgIGlua3NjYXBlOmxhYmVsPSJXaGl0ZXMgTGF5ZXIiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjEzMzkxNzJlLTYsLTI5LjMwMTg3OSkiPjxwYXRoCiAgICAgICBzdHlsZT0iYmFzZWxpbmUtc2hpZnQ6YmFzZWxpbmU7ZGlzcGxheTppbmxpbmU7b3ZlcmZsb3c6dmlzaWJsZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjE7ZW5hYmxlLWJhY2tncm91bmQ6YWNjdW11bGF0ZTtzdG9wLWNvbG9yOiMwMDAwMDA7ZmlsbDpub25lIgogICAgICAgZD0ibSAxNTIuNDc2NDksNDEuNjg5MjM3IGMgLTEuNzQyMDQsLTAuMDU4MzQgLTMuNTUxOCwtMC4wMDQ3IC01LjQzMTcxLDAuMTcwMDE1IC0xOC45MzQ0NiwxLjc1OTkzNCAtMzIuNDg0MDksOS40NzkzMDEgLTQyLjA4NTgxLDIwLjA1ODcyNSAtOS42MDE3MTEsMTAuNTc5NDIzIC0xNS4yNTcxNjYsMjQuMDE1MzA1IC0xOC40MzE0MzIsMzcuMjE2ODUxIC0zLjE3NDI2NiwxMy4yMDE1NDIgLTMuODY2ODAzLDI2LjE3MDAwMiAtMy41MzM2MzQsMzUuODE4NDgyIDAuMTY2NTg0LDQuODI0MjUgMC41OTAyNjksOC44MTc5NSAxLjA4ODMwNiwxMS41OTkzIDAuMjQ5MDE5LDEuMzkwNjggMC41MTQ2ODQsMi40Nzg0OCAwLjc4MDgzLDMuMjE4OTIgMC4xMzMwNzMsMC4zNzAyMyAwLjI2NTQ5NSwwLjY1MTcgMC40MDA0OTMsMC44NDc0OSAwLjA2NzUsMC4wOTc5IDAuMTM2MjgxLDAuMTc0NjggMC4yMTA4NCwwLjIyODQxIDAuMDc0NTYsMC4wNTM3IDAuMTU5OTU1LDAuMDg0NSAwLjI0NjQ5NiwwLjA3NjUgMTcuOTgwNzcxLC0xLjY3NDA2IDM2Ljk3NzQ4MSwtMS44MjI3IDU0LjAwMTM2MSwtMS4zMTgyNyAtMC41ODcxNCwtMi42NjkwNCAtNC45NDk2NCwtMjUuODg5NTQgMjAuMTgyMjMsLTI5LjA4ODE1IDI0LjA3NTA1LC0zLjA2NDA5IDIyLjY5NTIsMjYuNjE3NDggMTguNzgyMzEsMzEuMzk5MTIgMTAuMTQwMDksMC44OTI4NiAxNi4zNjIzMSwxLjY3NTM1IDE2LjM2MjMxLDEuNjc1MzUgbCAwLjEwMTI5LDAuMDExNCAwLjAxLC0wLjEwMTI5IGMgMCwwIDMuMDA4OTEsLTI5LjI4NzE0IC0xLjQ5MTksLTU3Ljg4NDgzNyBDIDE5MS40MTc4OCw4MS4zMTgzNjUgMTg3LjI5MDgyLDY3LjE5MDI4NSAxNzkuOTYxMTEsNTYuOTc0NjA5IDE3My41NDc2MSw0OC4wMzU4OTQgMTY0LjY3MTI3LDQyLjA5NzYyIDE1Mi40NzcsNDEuNjg5MjM3IFoiCiAgICAgICBpZD0icGF0aDEiIC8+PHBhdGgKICAgICAgIHN0eWxlPSJiYXNlbGluZS1zaGlmdDpiYXNlbGluZTtkaXNwbGF5OmlubGluZTtvdmVyZmxvdzp2aXNpYmxlO2ZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjE7ZW5hYmxlLWJhY2tncm91bmQ6YWNjdW11bGF0ZTtzdG9wLWNvbG9yOiMwMDAwMDAiCiAgICAgICBkPSJtIDMwMC45MTYwMSw0MC43MTg3NTMgYyAtMTIuMTk0MjgsMC40MDgzODMgLTIxLjA3MDYxLDYuMzQ2NjU4IC0yNy40ODQxMSwxNS4yODUzNzMgLTcuMzI5NzEsMTAuMjE1Njc1IC0xMS40NTY3OCwyNC4zNDUzMDcgLTEzLjcwNzE4LDM4LjY0NDE1NCAtNC41MDA4MSwyOC41OTc2OSAtMS40OTI0MSw1Ny44ODQ4NCAtMS40OTI0MSw1Ny44ODQ4NCBsIDAuMDEwMywwLjEwMTggMC4xMDEyOSwtMC4wMTM5IGMgMCwwIDYuMjIyMDcsLTAuNzgyMjggMTYuMzYxNzksLTEuNjc0ODMgLTMuOTEyNjUsLTQuNzgyODMgLTUuMjkyMTEsLTM0LjQ2MjYyIDE4Ljc4MjMyLC0zMS4zOTg2IDI1LjEzMzQyLDMuMTk4OCAyMC43Njg5MywyNi40MjIwMSAyMC4xODIyMywyOS4wODg2NiAxNy4wMjM5OCwtMC41MDQxMiAzNi4wMjA5NiwtMC4zNTUyOSA1NC4wMDE4NywxLjMxODc4IDAuMDg2NSwwLjAwOCAwLjE3MTQyLC0wLjAyMjIgMC4yNDU5OCwtMC4wNzYgMC4wNzQ2LC0wLjA1MzcgMC4xNDMzNCwtMC4xMzEwMyAwLjIxMDg0LC0wLjIyODkzIDAuMTM0OTksLTAuMTk1NzkgMC4yNjc0MSwtMC40NzkzNCAwLjQwMDQ5LC0wLjg0OTU2IDAuMjY2MTQsLTAuNzQwNDQgMC41MzIzMywtMS44Mjc3MyAwLjc4MTM1LC0zLjIxODQxIDAuNDk4MDMsLTIuNzgxMzUgMC45MjEyLC02Ljc3NTU3IDEuMDg3NzksLTExLjU5OTgxIDAuMzMzMTcsLTkuNjQ4NDggLTAuMzU4ODUsLTIyLjYxNDg3IC0zLjUzMzEyLC0zNS44MTY0MTYgLTMuMTc0NDksLTEzLjIwMTQ5NiAtOC44MzAyMywtMjYuNjM4OTc3IC0xOC40MzE5NSwtMzcuMjE4NDAxIC05LjYwMTcxLC0xMC41Nzk0MjQgLTIzLjE1MTM0LC0xOC4yOTY3MjMgLTQyLjA4NTgsLTIwLjA1NjY1NyAtMS44Nzk5MSwtMC4xNzQ3MzUgLTMuNjg5NjgsLTAuMjMwNDIzIC01LjQzMTcxLC0wLjE3MjA4MyB6IgogICAgICAgaWQ9InBhdGgyIiAvPjwvZz48ZwogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMiIKICAgICBpbmtzY2FwZTpsYWJlbD0iUHVwaWxzIExheWVyIgogICAgIHN0eWxlPSJkaXNwbGF5OmlubGluZSI+PHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjU0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgZD0ibSAxMzkuNjY3MjcsMTQ5LjU3MzgxIGMgMCwwIC02LjQzMzg2LC0yNS42NjE5IDIwLjIzNjk0LC0yOS4wNTYzNyAyNi42NzA4LC0zLjM5NDQ2IDIyLjI2MTIzLDMyLjc2MTM5IDE3LjYxNjUsMzEuMzY3OTcgLTQuODQ5MjQsLTEuNDU0NzYgLTMzLjAwNDIsLTIuMzExNiAtMzcuODUzNDQsLTIuMzExNiB6IgogICAgICAgaWQ9InBhdGgzIgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjc3NjIgogICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuMTMzOTE3MmUtNiwtMjkuMzAxODgpIiAvPjxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjI1NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMzEzLjUwMDAxLDE0OC43MTY1NyBjIDAsMCA2LjY1OTA4LC0yNS43NzQ1IC0yMC4wMTE3MiwtMjkuMTY4OTcgLTI2LjY3MDgsLTMuMzk0NDYgLTIyLjI2MTIzLDMyLjYwMjE0IC0xNy42MTY1LDMxLjIwODcyIDQuODQ5MjMsLTEuNDU0NzcgMzIuNzc4OTgsLTIuMDM5NzUgMzcuNjI4MjIsLTIuMDM5NzUgeiIKICAgICAgIGlkPSJwYXRoNSIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY3NzYyIKICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjEzMzkxNzJlLTYsLTI5LjMwMTg4KSIgLz48L2c+PGcKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjMiCiAgICAgaW5rc2NhcGU6bGFiZWw9Ik1vdXRoIExheWVyIj48cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTQwMDAwMTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtmaWxsLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMzk5LjQ1NjU0LDIxNS41NjI1IGMgMCwwIC00OS40NjIyNSw3LjAzMTM5IC01Mi4xMjkzMSw3Ljc1ODc4IC0yLjY2NzA5LDAuNzI3MzggLTguMDAxMjMsMzMuNDU5NzQgLTE0LjU0NzcsMzMuNDU5NzQgLTYuNTQ2NSwwIC0yMi4zMDY1MSwtMzkuNTIxMjkgLTI0LjczMTExLC0zOS43NjM3NiAtMi40MjQ2MywtMC4yNDI0NiAtMTYwLjAyNDgzLDAgLTE2MC41MDk3NiwzLjYzNjkzIC0wLjQ4NDkyLDMuNjM2OTMgLTEzLjgyMDMzLDQyLjkxNTc2IC0yMC4zNjY4LDQyLjkxNTc2IC02LjU0NjQ2LDAgLTE4LjY2OTU2LC0zMy43MDIyIC0yMS44MjE1NywtMzIuMjQ3NDMgLTMuMTUyLDEuNDU0NzcgLTQ4LjAwNzQ0NywtOC40ODYxNiAtNDguNDkyMzcyLC00LjM2NDMyIC0wLjQ4NDkyMiw0LjEyMTg1IDI4LjYxMDUwMSw5OS44OTQyOCAxNzEuNjYzMDAyLDk2LjI1NzM3IDE0My4wNTI0OSwtMy42MzY5NCAxNjkuNzIzMywtMTA3LjY1MzA3IDE3MC45MzU2MiwtMTA3LjY1MzA3IHoiCiAgICAgICBpZD0icGF0aDYiCiAgICAgICBzb2RpcG9kaTpub2RldHlwZXM9ImNzc3Nzc3Nzc2MiCiAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS4xMzM5MTcyZS02LC0yOS4zMDE4OCkiIC8+PC9nPjwvc3ZnPgo="
+              src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTcuOTk1MTI1aW4iCiAgIGhlaWdodD0iMTIuNTE0MjM5aW4iCiAgIHZpZXdCb3g9IjAgMCA0NTcuMDc2MTggMzE3Ljg2MTY4IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmcxIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjQuMyAoMGQxNWY3NTA0MiwgMjAyNS0xMi0yNSkiCiAgIHNvZGlwb2RpOmRvY25hbWU9InNjcmFwcHkuc3ZnIgogICB4bWw6c3BhY2U9InByZXNlcnZlIgogICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9InNjcmFwcHktbGFzZXIuc3ZnIgogICBpbmtzY2FwZTpleHBvcnQteGRwaT0iOTYiCiAgIGlua3NjYXBlOmV4cG9ydC15ZHBpPSI5NiIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEiCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0iaW4iCiAgICAgaW5rc2NhcGU6em9vbT0iMC44MzA3MjA0IgogICAgIGlua3NjYXBlOmN4PSI3NzQuMDI2OTciCiAgICAgaW5rc2NhcGU6Y3k9IjY1My42NDk1MyIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE4MDQiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTMzMSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIwIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSIKICAgICBzaG93Z3JpZD0idHJ1ZSIKICAgICBpbmtzY2FwZTpsb2NrZ3VpZGVzPSJmYWxzZSI+PGlua3NjYXBlOmdyaWQKICAgICAgIGlkPSJncmlkMSIKICAgICAgIHVuaXRzPSJpbiIKICAgICAgIG9yaWdpbng9Ii0xLjEzMzkxNzJlLTA2IgogICAgICAgb3JpZ2lueT0iLTI5LjMwMTg3OSIKICAgICAgIHNwYWNpbmd4PSIyNS40IgogICAgICAgc3BhY2luZ3k9IjI1LjQiCiAgICAgICBlbXBjb2xvcj0iIzAwOTllNSIKICAgICAgIGVtcG9wYWNpdHk9IjAuMzAxOTYwNzgiCiAgICAgICBjb2xvcj0iIzAwOTllNSIKICAgICAgIG9wYWNpdHk9IjAuMTQ5MDE5NjEiCiAgICAgICBlbXBzcGFjaW5nPSI5IgogICAgICAgZW5hYmxlZD0idHJ1ZSIKICAgICAgIHZpc2libGU9InRydWUiIC8+PC9zb2RpcG9kaTpuYW1lZHZpZXc+PGRlZnMKICAgICBpZD0iZGVmczEiPjxjbGlwUGF0aAogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiCiAgICAgICBpZD0iY2xpcFBhdGg2Ij48cmVjdAogICAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO3N0cm9rZTojZmYwMDAwO3N0cm9rZS13aWR0aDowIgogICAgICAgICBpZD0icmVjdDciCiAgICAgICAgIHdpZHRoPSI0MjQuNTU4NzIiCiAgICAgICAgIGhlaWdodD0iMjk1LjI0ODI2IgogICAgICAgICB4PSIxMS4xNDc0NTMiCiAgICAgICAgIHk9IjMxLjg0OTg2NyIgLz48L2NsaXBQYXRoPjwvZGVmcz48ZwogICAgIGlua3NjYXBlOmxhYmVsPSJXaGl0ZXMgTGF5ZXIiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjEzMzkxNzJlLTYsLTI5LjMwMTg3OSkiPjxwYXRoCiAgICAgICBzdHlsZT0iYmFzZWxpbmUtc2hpZnQ6YmFzZWxpbmU7ZGlzcGxheTppbmxpbmU7b3ZlcmZsb3c6dmlzaWJsZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjE7ZW5hYmxlLWJhY2tncm91bmQ6YWNjdW11bGF0ZTtzdG9wLWNvbG9yOiMwMDAwMDA7ZmlsbDpub25lIgogICAgICAgZD0ibSAxNTIuNDc2NDksNDEuNjg5MjM3IGMgLTEuNzQyMDQsLTAuMDU4MzQgLTMuNTUxOCwtMC4wMDQ3IC01LjQzMTcxLDAuMTcwMDE1IC0xOC45MzQ0NiwxLjc1OTkzNCAtMzIuNDg0MDksOS40NzkzMDEgLTQyLjA4NTgxLDIwLjA1ODcyNSAtOS42MDE3MTEsMTAuNTc5NDIzIC0xNS4yNTcxNjYsMjQuMDE1MzA1IC0xOC40MzE0MzIsMzcuMjE2ODUxIC0zLjE3NDI2NiwxMy4yMDE1NDIgLTMuODY2ODAzLDI2LjE3MDAwMiAtMy41MzM2MzQsMzUuODE4NDgyIDAuMTY2NTg0LDQuODI0MjUgMC41OTAyNjksOC44MTc5NSAxLjA4ODMwNiwxMS41OTkzIDAuMjQ5MDE5LDEuMzkwNjggMC41MTQ2ODQsMi40Nzg0OCAwLjc4MDgzLDMuMjE4OTIgMC4xMzMwNzMsMC4zNzAyMyAwLjI2NTQ5NSwwLjY1MTcgMC40MDA0OTMsMC44NDc0OSAwLjA2NzUsMC4wOTc5IDAuMTM2MjgxLDAuMTc0NjggMC4yMTA4NCwwLjIyODQxIDAuMDc0NTYsMC4wNTM3IDAuMTU5OTU1LDAuMDg0NSAwLjI0NjQ5NiwwLjA3NjUgMTcuOTgwNzcxLC0xLjY3NDA2IDM2Ljk3NzQ4MSwtMS44MjI3IDU0LjAwMTM2MSwtMS4zMTgyNyAtMC41ODcxNCwtMi42NjkwNCAtNC45NDk2NCwtMjUuODg5NTQgMjAuMTgyMjMsLTI5LjA4ODE1IDI0LjA3NTA1LC0zLjA2NDA5IDIyLjY5NTIsMjYuNjE3NDggMTguNzgyMzEsMzEuMzk5MTIgMTAuMTQwMDksMC44OTI4NiAxNi4zNjIzMSwxLjY3NTM1IDE2LjM2MjMxLDEuNjc1MzUgbCAwLjEwMTI5LDAuMDExNCAwLjAxLC0wLjEwMTI5IGMgMCwwIDMuMDA4OTEsLTI5LjI4NzE0IC0xLjQ5MTksLTU3Ljg4NDgzNyBDIDE5MS40MTc4OCw4MS4zMTgzNjUgMTg3LjI5MDgyLDY3LjE5MDI4NSAxNzkuOTYxMTEsNTYuOTc0NjA5IDE3My41NDc2MSw0OC4wMzU4OTQgMTY0LjY3MTI3LDQyLjA5NzYyIDE1Mi40NzcsNDEuNjg5MjM3IFoiCiAgICAgICBpZD0icGF0aDEiIC8+PHBhdGgKICAgICAgIHN0eWxlPSJiYXNlbGluZS1zaGlmdDpiYXNlbGluZTtkaXNwbGF5OmlubGluZTtvdmVyZmxvdzp2aXNpYmxlO2ZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjE7ZW5hYmxlLWJhY2tncm91bmQ6YWNjdW11bGF0ZTtzdG9wLWNvbG9yOiMwMDAwMDAiCiAgICAgICBkPSJtIDMwMC45MTYwMSw0MC43MTg3NTMgYyAtMTIuMTk0MjgsMC40MDgzODMgLTIxLjA3MDYxLDYuMzQ2NjU4IC0yNy40ODQxMSwxNS4yODUzNzMgLTcuMzI5NzEsMTAuMjE1Njc1IC0xMS40NTY3OCwyNC4zNDUzMDcgLTEzLjcwNzE4LDM4LjY0NDE1NCAtNC41MDA4MSwyOC41OTc2OSAtMS40OTI0MSw1Ny44ODQ4NCAtMS40OTI0MSw1Ny44ODQ4NCBsIDAuMDEwMywwLjEwMTggMC4xMDEyOSwtMC4wMTM5IGMgMCwwIDYuMjIyMDcsLTAuNzgyMjggMTYuMzYxNzksLTEuNjc0ODMgLTMuOTEyNjUsLTQuNzgyODMgLTUuMjkyMTEsLTM0LjQ2MjYyIDE4Ljc4MjMyLC0zMS4zOTg2IDI1LjEzMzQyLDMuMTk4OCAyMC43Njg5MywyNi40MjIwMSAyMC4xODIyMywyOS4wODg2NiAxNy4wMjM5OCwtMC41MDQxMiAzNi4wMjA5NiwtMC4zNTUyOSA1NC4wMDE4NywxLjMxODc4IDAuMDg2NSwwLjAwOCAwLjE3MTQyLC0wLjAyMjIgMC4yNDU5OCwtMC4wNzYgMC4wNzQ2LC0wLjA1MzcgMC4xNDMzNCwtMC4xMzEwMyAwLjIxMDg0LC0wLjIyODkzIDAuMTM0OTksLTAuMTk1NzkgMC4yNjc0MSwtMC40NzkzNCAwLjQwMDQ5LC0wLjg0OTU2IDAuMjY2MTQsLTAuNzQwNDQgMC41MzIzMywtMS44Mjc3MyAwLjc4MTM1LC0zLjIxODQxIDAuNDk4MDMsLTIuNzgxMzUgMC45MjEyLC02Ljc3NTU3IDEuMDg3NzksLTExLjU5OTgxIDAuMzMzMTcsLTkuNjQ4NDggLTAuMzU4ODUsLTIyLjYxNDg3IC0zLjUzMzEyLC0zNS44MTY0MTYgLTMuMTc0NDksLTEzLjIwMTQ5NiAtOC44MzAyMywtMjYuNjM4OTc3IC0xOC40MzE5NSwtMzcuMjE4NDAxIC05LjYwMTcxLC0xMC41Nzk0MjQgLTIzLjE1MTM0LC0xOC4yOTY3MjMgLTQyLjA4NTgsLTIwLjA1NjY1NyAtMS44Nzk5MSwtMC4xNzQ3MzUgLTMuNjg5NjgsLTAuMjMwNDIzIC01LjQzMTcxLC0wLjE3MjA4MyB6IgogICAgICAgaWQ9InBhdGgyIiAvPjwvZz48ZwogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMiIKICAgICBpbmtzY2FwZTpsYWJlbD0iUHVwaWxzIExheWVyIgogICAgIHN0eWxlPSJkaXNwbGF5OmlubGluZSI+PHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjU0O3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgZD0ibSAxMzkuNjY3MjcsMTQ5LjU3MzgxIGMgMCwwIC02LjQzMzg2LC0yNS42NjE5IDIwLjIzNjk0LC0yOS4wNTYzNyAyNi42NzA4LC0zLjM5NDQ2IDIyLjI2MTIzLDMyLjc2MTM5IDE3LjYxNjUsMzEuMzY3OTcgLTQuODQ5MjQsLTEuNDU0NzYgLTMzLjAwNDIsLTIuMzExNiAtMzcuODUzNDQsLTIuMzExNiB6IgogICAgICAgaWQ9InBhdGgzIgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjc3NjIgogICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuMTMzOTE3MmUtNiwtMjkuMzAxODgpIiAvPjxwYXRoCiAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjI1NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMzEzLjUwMDAxLDE0OC43MTY1NyBjIDAsMCA2LjY1OTA4LC0yNS43NzQ1IC0yMC4wMTE3MiwtMjkuMTY4OTcgLTI2LjY3MDgsLTMuMzk0NDYgLTIyLjI2MTIzLDMyLjYwMjE0IC0xNy42MTY1LDMxLjIwODcyIDQuODQ5MjMsLTEuNDU0NzcgMzIuNzc4OTgsLTIuMDM5NzUgMzcuNjI4MjIsLTIuMDM5NzUgeiIKICAgICAgIGlkPSJwYXRoNSIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY3NzYyIKICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjEzMzkxNzJlLTYsLTI5LjMwMTg4KSIgLz48L2c+PGcKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjMiCiAgICAgaW5rc2NhcGU6bGFiZWw9Ik1vdXRoIExheWVyIj48cGF0aAogICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTQwMDAwMTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtmaWxsLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMzk5LjQ1NjU0LDIxNS41NjI1IGMgMCwwIC00OS40NjIyNSw3LjAzMTM5IC01Mi4xMjkzMSw3Ljc1ODc4IC0yLjY2NzA5LDAuNzI3MzggLTguMDAxMjMsMzMuNDU5NzQgLTE0LjU0NzcsMzMuNDU5NzQgLTYuNTQ2NSwwIC0yMi4zMDY1MSwtMzkuNTIxMjkgLTI0LjczMTExLC0zOS43NjM3NiAtMi40MjQ2MywtMC4yNDI0NiAtMTYwLjAyNDgzLDAgLTE2MC41MDk3NiwzLjYzNjkzIC0wLjQ4NDkyLDMuNjM2OTMgLTEzLjgyMDMzLDQyLjkxNTc2IC0yMC4zNjY4LDQyLjkxNTc2IC02LjU0NjQ2LDAgLTE4LjY2OTU2LC0zMy43MDIyIC0yMS44MjE1NywtMzIuMjQ3NDMgLTMuMTUyLDEuNDU0NzcgLTQ4LjAwNzQ0NywtOC40ODYxNiAtNDguNDkyMzcyLC00LjM2NDMyIC0wLjQ4NDkyMiw0LjEyMTg1IDI4LjYxMDUwMSw5OS44OTQyOCAxNzEuNjYzMDAyLDk2LjI1NzM3IDE0My4wNTI0OSwtMy42MzY5NCAxNjkuNzIzMywtMTA3LjY1MzA3IDE3MC45MzU2MiwtMTA3LjY1MzA3IHoiCiAgICAgICBpZD0icGF0aDYiCiAgICAgICBzb2RpcG9kaTpub2RldHlwZXM9ImNzc3Nzc3Nzc2MiCiAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS4xMzM5MTcyZS02LC0yOS4zMDE4OCkiIC8+PC9nPjwvc3ZnPgo="
               alt="" height="383" width="552"><br>
             The next step is to use something like <a
               href="https://flatcam.org/">FlatCAM</a> to import the <code>.svg</code>
@@ -141,7 +393,7 @@ src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiI
             that document as HTML</p>
           <p>That process involved using the File | Export function, and
             then changing the output format to be HTML.</p>
-          <iframe style="width: 100%; height: 39em; padding: 0 0 0 0;
+          <iframe style="width: 100%; height: 37em; padding: 0 0 0 0;
             margin: 0% 0% 0 0" src="html/Claude-1.html"></iframe> </article>
         <article class="post" id="20260720T135017-0700">
           <h3>Where are we?</h3>
@@ -149,15 +401,25 @@ src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiI
           <p>Already kind of got started on the project before setting
             up this blog.</p>
           <p>When the original scrappy came to us, he was in pretty
-            sorry shape:</p>
+            sorry shape (here he is in the garage):</p>
+          <img style="width: 60%; object-fit: cover; clip-path:
+            inset(10% 10% 35% 10%); margin: -7% 0 -26% -5%; padding: 0;"
+               src="img/20260625_211938.jpg" alt="20260625_211938.jpg">
           <p>Seems he had been torn up and thrown away by janitorial
-            staff.</p>
-          <p>We figured out his approximate dimensions and then cut out
+            staff, so we brought him upstairs so we could measure him.</p>
+          <img style="width: 60%; object-fit: cover; clip-path:
+            inset(10% 10% 35% 10%); margin: -7% 0 -26% -5%; padding: 0;"
+               src="img/20260622_120919.jpg" alt="20260622_120919.jpg">
+          <p>We measured his body dimensions as best we could, and then cut away all the broken material except for his face. Notice that he's missing his left eyebrow. We actually still had that, but both eyebrows are the same shape, so I could have cut a mirror image of the original and used that.
+            Anway, here's what he looks like after cutting away his body..
+          </p>
+          <img style="width: 60%; "
+               src="img/20260627_133942.jpg" alt="20260627_133942.jpg">
+          <p>Having measured his body dimensions, we cut out
             a new wooden body for him, based on those.</p>
-          <p>Now, his body is about 16" high, 18" wide, and 24" deep." </p>
-          <p>His new body is made mostly of 1/2" smooth veneer plywood
-            from Home Depot, although we can't remember exactly which
-            product it was.</p>
+          <p>Now, his body is 16" high, 18" wide, and 24" deep. </p>
+          <p>His new body is made mostly of 1/2" smooth birch veneer plywood:
+            from <a href="https://www.homedepot.com/l/Bothell/WA/Bothell/98011/4712?emt_lcpq2" target="_blank">Home Depot Bothell (#4712)</a>.  The actual product is <a href="https://www.homedepot.com/p/Columbia-Forest-Products-1-2-in-x-4-ft-x-8-ft-PureBond-Birch-Plywood-833185/100020218" target="_blank">1/2 in. x 4 ft. x 8 ft. PureBond Birch Plywood</a></p>
           <img style="width: 60%; object-fit: cover; clip-path:
             inset(10% 10% 35% 10%); margin: -7% 0 -26% -5%; padding: 0;"
             src="img/20260720_160153.jpg" alt="20260720_160153.jpg">
@@ -176,6 +438,11 @@ src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiI
           <img style="width: 60%; object-fit: cover; clip-path: inset(0%
             0% 0% 0%); margin: -0% 0 -0% -0%; padding: 0;"
             src="img/20260627_133942.jpg" alt="20260627_133942.jpg">
+          <p>. His face is now almost 16" (15⅞") wide and 18" (78⅞") high</p>
+          <img style="width: 30%; margin: -0% 0 -0% -0%; padding: 0;"
+               src="img/20260901_125531.jpg" alt="20260901_125531.jpg">
+          <img style="width: 30%; margin: -0% 0 -0% -0%; padding: 0;"
+               src="img/20260901_125510.jpg" alt="20260901_125510.jpg">
           <p>Then we traced his mouth and eye shape onto a piece of
             paper with a mechanical pencil.</p>
           <img style="width: 60%; object-fit: cover; clip-path: inset(0%
