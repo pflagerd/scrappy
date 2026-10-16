@@ -60,9 +60,21 @@ integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRRe
         <article class="post" id="250914-1140">
           <h3>TODO</h3>
           <p class="meta">What needs doing everywhere ...</p>
-          <p class="meta">2025-09-14 11:40 (UTC-7) by Daniel</p>
+          <p class="meta">Thu Oct 15 03:34:57 PM PDT 2026 by Daniel</p>
 
-          <p title=""><label><input type="checkbox"> </label><a href=""
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Trim Scrappy's underside</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Paint Scrappy's sides</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Paint Scrappy's face</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Assemble Scrappy's sides and face including his underside</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Reinforce Scrappy's sides, face and underside with 2x2, 2x4, and/or 2x6 scraps.</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Cut Scrappy's top</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Cut a hole in Scrappy's top, round it, sand it and seal it.</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Paint Scrappy's top</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Attach Scrappy's top</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Finish painting edges and things which need finishing.</p>
+          <p title=""><label><input type="checkbox"> </label><a href="" target="_blank"></a>Attach Scrappy's roller-feet</p>
+
+          <!--p title=""><label><input type="checkbox"> </label><a href=""
               target="_blank">Cut Scrappy's mouth out with Genmitsu
               Prover 4030 CNC</a><br>
           </p>
@@ -92,31 +104,60 @@ integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRRe
               subtask</a></p>
           <p style="margin-left: 2rem; display: none;" title=""><label><input
                 type="checkbox"> </label><a href="" target="_blank">A
-              subsubtask</a></p>
+              sub-subtask</a></p-->
         </article>
 
-        <article style="display:none;" class="post" id="20260720T134851-0700"> <!-- Copy me, remove "display:none" style and update this comment -->
-          <h3>Copy me, remove "display:none" style and update this comment</h3>
+        <article style="display:none;" class="post" id="XXXXXXXXTXXXXXX-XXXX"> <!-- prototype -->
+          <h3>prototype</h3>
           <p class="meta">Mon Jul 20 01:48:51 PM PDT 2026 by Daniel</p>
-          <p>I did a .fork of <a href="https://github.com/pflagerd/blog-bootstrap" target="_blank">https://github.com/pflagerd/blog-bootstrap</a></p>
-        </article> <!-- Copy me, remove "display:none" style and update this comment -->
+          <p>Replace and add to this line some content</p>
+        </article> <!-- prototype -->
 
+        <article style="" class="post" id="20261015T150754-0700"> <!-- Which gcode? -->
+          <h3>Which gcode?</h3>
+          <p class="meta">Thu Oct 15 03:07:54 PM PDT 2026 by Daniel</p>
+          <p>Somehow there are two directories in this project containing gcode.</p>
+          <p style="margin-left: 1em;">scrappy/gcode/</p>
+          <p style="margin-left: 1em;">scrappy/cam_scripts/gcode/</p>
+          <p>There were some files from each directory still un-committed on the 4030 XLProver's computer.</p>
+          <p>I used gcode/scrappy_1_eye_whites.gcode as a basis for hand coding gcode/scrappy_1_eye_whites-5.5mm-deep.gcode, which I used to cut a stencil out of thin plywood to use as a paint-shield for Scrappy's eye-whites.</p>
+          <p>This is the stencil:</p>
+          <img style="width: 30%;" src="img/20261014_175155.jpg" alt="img/20261014_175155.jpg">
+          <p>The cut-outs match Scrappy's face exactly!</p>
+          <p>I decided to cut some eye-white pockets in a piece of scrap wood so I could test the stencil process without wrecking scrappy's face.</p>
+          <p>I used <a href="cam_scripts/gcode/scrappy_1_whites.gcode" target="_blank">cam_scripts/gcode/scrappy_1_whites.gcode</a> for these test eye-whites reasoning that I could compare the stencil's whites to the eye-white pockets to see if they differ.  If they don't, I'm inclined to declare the ones in cam_scripts/gcode/ as the canonical ones.</p>
+          <p>One thing I noticed is that <a href="cam_scripts/gcode/scrappy_1_whites.gcode" target="_blank">cam_scripts/gcode/scrappy_1_whites.gcode</a> has a feed rate of 300 which is quite slow.  This IS preferable, because the other file goes at F800, which might be why scrappy's actually whites have a kind of jagged edge is some places.</p>
+          <p>After the cutting was complete, I compared the whites with those of the stencil.  They match perfectly, so I'm going with <a href="cam_scripts/gcode/scrappy_1_whites.gcode" target="_blank">cam_scripts/gcode/scrappy_1_whites.gcode</a> as the canonical gcode for the eye whites.</p>
+          <p>As you can see, the cut eye-whites are actually much smoother than the ones in Scrappy's current face:</p>
+        </article> <!-- Which gcode? -->
 
-        <!--article class="post" id="20260907T134252-0700" style=""> <!-- Creating the gcode from <code>svg/scrappy-wood/scrappy-centered-on-4030-stock.svg -->
-          <!--h3>Creating the gcode from <code>svg/scrappy-wood/scrappy-centered-on-4030-stock.svg</code></h3>
-          <span style="font-family:monospace; color:#000000;background-color:#ffffff;">Mon Sep  7 01:42:52 PM PDT 2026 by Daniel</span>
-          <p>There are so many ways allegedly to convert from .svg to gcode, my mind boggles.</p>
-          <p>I did however, in the past, use an extension to Inkscape called gcodetools.</p>
-          <p>I also seem to have that still installed as an extension in Inkscape on the dell7750:</p>
-          <p><img style="width: 40%;" src="img/Screenshot_20260907_154446.png" alt="img/Screenshot_20260907_154446.png"></p>
-          <p>It's fairly current:</p>
-          <p><img style="width: 30%;" src="img/Screenshot_20260907_154647.png" alt="img/Screenshot_20260907_154647.png">
-          <p>The source code for it appear to be <a href="https://github.com/cnc-club/gcodetools" target="_blank">https://github.com/cnc-clib/gcodetools</a>, and as of today's date its version number is 1.7 as can be checked in this file:
-          <a href="https://github.com/cnc-club/gcodetools/blob/master/stable/gcodetools_about.inx" target="_blank">https://github.com/cnc-club/gcodetools/blob/master/stable/gcodetools_about.inx</a>.</p>
-        </article><!-- Creating the gcode from <code>svg/scrappy-wood/scrappy-centered-on-4030-stock.svg -->
+        <article style="" class="post" id="220261015T144544-0700"> <!-- Started Painting Scrappy -->
+          <h3>Started Painting Scrappy</h3>
+          <p class="meta">Thu Oct 15 02:45:44 PM PDT 2026 by Daniel</p>
+          <p>I've started painting Scrappy's sides and face. I am using BEHR Fast Drying Paint+Primer (Hidden Sea Glass | Gloss) as his base color.</p>
+          <p>We bought BEHR Fast Drying Paint+Primer (Hidden Sea Glass | Gloss) at Home Depot:</p>
+          <img style="width: 20%;" src="img/20261015_155316.jpg" alt="img/20261015_155316.jpg">
+          <img style="width: 20%;" src="img/20261015_155326.jpg" alt="img/20261015_155326.jpg">
+          <img style="width: 20%;" src="img/20261015_155330.jpg" alt="img/20261015_155330.jpg">
+          <p>Here is his face, still in progress:</p>
+          <img style="width: 30%;" src="img/20261015_152213.jpg" alt="img/20261015_152213.jpg">
+          <p>Here are his sides with a couple of coats on them:</p>
+          <img style="width: 30%;" src="img/20261015_152221.jpg" alt="img/20261015_152221.jpg">
+          <p>His underside is recessed and made of composite flooring left over from another project.</p>
+          <img style="width: 30%;" src="img/20261015_152228.jpg" alt="img/20261015_152228.jpg">
+          <p>Due to a problem which required me to re-route the linear channels in each of the four sides (one of which is his face) into which his underside fit, I had to trim off material from one of the long sides of his underside.</p>
+          <p>This is what one of the new channels looks like.  They were of arbitrary depth, so I have to trim by trial and error:</p>
+          <img style="width: 30%;" src="img/20261015_152237.jpg" alt="img/20261015_152237.jpg">
+          <p>I still need to trim to the short side of his underside, but his face is currently still drying after having received another coat of paint.</p>
+          <p>I will roughly assemble 3 of his 4 sides with his underside protruding into the recess of the back of his face.  If his underside protrudes too much, it will keep his face from sitting flush with his sides.</p>
+          <p>That is how I'll know the short side of his underside needs trimming.  I'm using my work-mate hacked router table to do the short-side end-trimming.</p>
+          <p>I still need to cut and paint his top cover, and reinforce his frame with some scrap wood, maybe 2x4 or 2x6 remnants.</p>
+          <p>He also needs some paint on some exposed edges, but I'll do those after his face, sides and bottom are assembled.  I'm planning to use brads with an air-nailer to tack those parts of him together.</p>
+          <p>I'll also glue his sides (and face) where I use brads.</p>
+        </article> <!-- Started Painting Scrappy -->
 
         <article class="post" id="20260730T191400-0700" style=""> <!-- claude.ai generates python code to generate gcode for scrappy -->
-          <h3>claude.ai generates python code to generate gcode for scrappy</code></h3>
+          <h3>claude.ai generates python code to generate gcode for scrappy</h3>
           <span style="font-family:monospace; color:#000000;background-color:#ffffff;">Thu Jul 30 07:14:00 PM PDT 2026 by Daniel</span>
           <p>I cannot begin to document all the machinations I went through with claude.ai to generate the Python code which I used to generate the gcode for Scrappy.</p>
           <p>Suffice to say that you can find the code under the directory <code>cam_scripts/</code>, and the gcode files generated from the code in <code>cam_scripts/gcode/</code></p>
